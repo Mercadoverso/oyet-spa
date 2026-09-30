@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es-CL" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; object-src 'none'; base-uri 'self'; form-action 'self';">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Cotizar | Oyet SpA — Solicita tu propuesta técnica</title>
+  <meta name="description" content="Solicita cotización de carrocerías, tolvas, estanques y semirremolques Oyet SpA. Formulario técnico detallado.">
+  <link rel="canonical" href="https://oyet.cl/cotizar.html">
+  <meta property="og:title" content="Cotizar | Oyet SpA">
+  <meta property="og:url" content="https://oyet.cl/cotizar.html">
+  <link rel="icon" href="/assets/img/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script src="https://cdn.tailwindcss.com" defer></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body class="bg-white text-black antialiased">
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+  <header class="fixed w-full z-50 bg-white border-b border-black/10">
+    <div class="container-custom py-4 flex justify-between items-center">
+      <a href="/" class="flex-shrink-0"><img src="/assets/img/Logo-oyet-01.png" alt="Oyet SpA" class="h-8 md:h-10 w-auto object-contain"></a>
+      <nav class="hidden md:flex space-x-8 items-center" aria-label="Navegación principal">
+        <a href="/" class="text-[11px] font-bold uppercase tracking-wider text-black hover:opacity-60">Inicio</a>
+        <a href="empresa.html" class="text-[11px] font-bold uppercase tracking-wider text-black hover:opacity-60">Empresa</a>
+        <a href="productos.html" class="text-[11px] font-bold uppercase tracking-wider text-black hover:opacity-60">Productos</a>
+        <a href="servicios.html" class="text-[11px] font-bold uppercase tracking-wider text-black hover:opacity-60">Servicios</a>
+        <a href="clientes.html" class="text-[11px] font-bold uppercase tracking-wider text-black hover:opacity-60">Clientes</a>
+      </nav>
+      <div class="hidden md:flex items-center gap-4">
+        <a href="contacto.html" class="text-[11px] font-bold uppercase tracking-wider text-black hover:opacity-60">Contacto</a>
+        <a href="cotizar.html" class="bg-black text-white text-[11px] font-bold uppercase tracking-wider px-5 py-3 shadow-md hover:bg-black/80" aria-current="page">Cotizar</a>
+        <button id="contrast-toggle" type="button" class="text-[11px] font-bold uppercase tracking-wider text-black hover:opacity-60 px-2 py-1 border border-black/20">🌓 Contraste</button>
+      </div>
+      <button id="mobile-menu-button" type="button" class="md:hidden text-black focus:outline-none" aria-label="Abrir menú" aria-expanded="false"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path><path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-black/10 w-full">
+      <div class="container-custom py-4 flex flex-col space-y-3">
+        <a href="/" class="mobile-link py-2 text-sm font-bold uppercase tracking-wider text-black">Inicio</a>
+        <a href="empresa.html" class="mobile-link py-2 text-sm font-bold uppercase tracking-wider text-black">Empresa</a>
+        <a href="productos.html" class="mobile-link py-2 text-sm font-bold uppercase tracking-wider text-black">Productos</a>
+        <a href="servicios.html" class="mobile-link py-2 text-sm font-bold uppercase tracking-wider text-black">Servicios</a>
+        <a href="clientes.html" class="mobile-link py-2 text-sm font-bold uppercase tracking-wider text-black">Clientes</a>
+        <a href="contacto.html" class="mobile-link py-2 text-sm font-bold uppercase tracking-wider text-black">Contacto</a>
+        <a href="cotizar.html" class="mobile-link bg-black text-white text-center py-3 text-sm font-bold uppercase tracking-wider">Cotizar</a>
+        <button id="contrast-toggle-mobile" type="button" class="bg-black/10 text-black text-center py-3 text-sm font-bold uppercase tracking-wider w-full mt-2">🌓 Modo Contraste</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="pt-40 pb-20 bg-black text-white">
+      <div class="container-custom" data-aos="fade-up">
+        <span class="text-white/50 text-[10px] font-bold uppercase tracking-wider">Solicitar</span>
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-black uppercase leading-tight tracking-tight mt-4">Cotización</h1>
+        <p class="text-white/70 text-sm md:text-base mt-6 max-w-2xl leading-relaxed">Completa el formulario y nuestro equipo de ingeniería evaluará los requerimientos de tu proyecto.</p>
+      </div>
+    </section>
+
+    <section class="py-20 bg-white">
+      <div class="container-custom max-w-3xl">
+        <form action="/api/cotizar" method="POST" class="space-y-5" data-oyet-form novalidate data-aos="fade-up">
+          <div class="grid md:grid-cols-2 gap-5">
+            <div>
+              <label for="nombre" class="block text-[10px] font-bold uppercase tracking-wider text-black/60 mb-2">Nombre completo *</label>
+              <input id="nombre" type="text" name="nombre" required autocomplete="name" class="w-full border border-black/20 p-3 text-sm focus:outline-none focus:border-black" placeholder="Juan Pérez">
+            </div>
+            <div>
+              <label for="empresa" class="block text-[10px] font-bold uppercase tracking-wider text-black/60 mb-2">Empresa</label>
+              <input id="empresa" type="text" name="empresa" autocomplete="organization" class="w-full border border-black/20 p-3 text-sm focus:outline-none focus:border-black" placeholder="Minera Ejemplo SpA">
+            </div>
+          </div>
+          <div class="grid md:grid-cols-2 gap-5">
+            <div>
+              <label for="rut" class="block text-[10px] font-bold uppercase tracking-wider text-black/60 mb-2">RUT Empresa</label>
+              <input id="rut" type="text" name="rut" autocomplete="off" class="w-full border border-black/20 p-3 text-sm focus:outline-none focus:border-black" placeholder="76.468.853-8">
+            </div>
+            <div>
+              <label for="email" class="block text-[10px] font-bold uppercase tracking-wider text-black/60 mb-2">Email corporativo *</label>
+              <input id="email" type="email" name="email" required autocomplete="email" class="w-full border border-black/20 p-3 text-sm focus:outline-none focus:border-black" placeholder="contacto@empresa.cl">
+            </div>
+          </div>
+          <div class="grid md:grid-cols-2 gap-5">
+            <div>
+              <label for="telefono" class="block text-[10px] font-bold uppercase tracking-wider text-black/60 mb-2">Teléfono / WhatsApp *</label>
+              <input id="telefono" type="tel" name="telefono" required autocomplete="tel" class="w-full border border-black/20 p-3 text-sm focus:outline-none focus:border-black" placeholder="+56 9 1234 5678">
+            </div>
+            <div>
+              <label for="tipo" class="block text-[10px] font-bold uppercase tracking-wider text-black/60 mb-2">Tipo de equipo *</label>
+              <select id="tipo" name="tipo" required class="w-full border border-black/20 p-3 text-sm focus:outline-none focus:border-black">
+                <option value="">Selecciona...</option>
+                <option value="carroceria-minera">Carrocería Minera para Lubricación</option>
+                <option value="carroceria-servicio">Carrocería para Servicio</option>
+                <option value="estanque">Estanque sobre Camión</option>
+                <option value="semiremolque">Semirremolque Plano o Rebajado</option>
+                <option value="tolva">Tolva sobre Camión</option>
+                <option value="hidraulico">Sistema Hidráulico</option>
+                <option value="otro">Otro / Diseño especial</option>
+              </select>
+            </div>
+          </div>
+          <div class="grid md:grid-cols-2 gap-5">
+            <div>
+              <label for="capacidad" class="block text-[10px] font-bold uppercase tracking-wider text-black/60 mb-2">Capacidad requerida</label>
+              <input id="capacidad" type="text" name="capacidad" class="w-full border border-black/20 p-3 text-sm focus:outline-none focus:border-black" placeholder="Ej: 25 m³ / 30 ton">
+            </div>
+            <div>
+              <label for="plazo" class="block text-[10px] font-bold uppercase tracking-wider text-black/60 mb-2">Plazo estimado</label>
+              <select id="plazo" name="plazo" class="w-full border border-black/20 p-3 text-sm focus:outline-none focus:border-black">
+                <option value="">Sin urgencia</option>
+                <option value="30-dias">Menos de 30 días</option>
+                <option value="60-dias">Entre 30 y 60 días</option>
+                <option value="90-dias">Entre 60 y 90 días</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label for="detalles" class="block text-[10px] font-bold uppercase tracking-wider text-black/60 mb-2">Detalles técnicos del proyecto</label>
+            <textarea id="detalles" name="detalles" rows="5" class="w-full border border-black/20 p-3 text-sm focus:outline-none focus:border-black" placeholder="Describe aceros requeridos, uso previsto, condiciones de operación, color, accesorios especiales, etc."></textarea>
+          </div>
+          <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div class="flex items-start gap-3">
+            <input type="checkbox" id="acepto" name="acepto" required class="mt-1">
+            <label for="acepto" class="text-[11px] text-black/60 leading-relaxed">Acepto la <a href="privacidad.html" class="underline text-black">Política de Privacidad</a> y autorizo el tratamiento de mis datos conforme a la Ley 19.628.</label>
+          </div>
+          <button type="submit" class="w-full bg-black text-white py-4 text-xs font-bold uppercase tracking-wider hover:bg-black/80">Enviar solicitud de cotización</button>
+          <p class="text-[10px] text-black/50 leading-relaxed text-center">Nuestro equipo responderá en un plazo máximo de 48 horas hábiles.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-black text-white py-12 border-t border-white/10">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div><img src="/assets/img/Logo-oyet-01.png" alt="Oyet SpA" class="h-8 w-auto object-contain filter brightness-0 invert mb-4" loading="lazy"><p class="text-white/50 text-xs leading-relaxed">Empresa metalúrgica especializada en equipos para minería y transporte pesado desde 2015.</p></div>
+        <div><h4 class="text-xs font-bold uppercase tracking-wider mb-4">Secciones</h4><ul class="space-y-2 text-xs text-white/50"><li><a href="/" class="hover:text-white transition">Inicio</a></li><li><a href="empresa.html" class="hover:text-white transition">Empresa</a></li><li><a href="productos.html" class="hover:text-white transition">Productos</a></li><li><a href="contacto.html" class="hover:text-white transition">Contacto</a></li></ul></div>
+        <div><h4 class="text-xs font-bold uppercase tracking-wider mb-4">Servicios</h4><ul class="space-y-2 text-xs text-white/50"><li><a href="productos.html" class="hover:text-white transition">Carrocerías</a></li><li><a href="productos.html" class="hover:text-white transition">Estanques</a></li><li><a href="productos.html" class="hover:text-white transition">Tolvas</a></li><li><a href="servicios.html" class="hover:text-white transition">Sistemas Hidráulicos</a></li></ul></div>
+        <div><h4 class="text-xs font-bold uppercase tracking-wider mb-4">Legal</h4><ul class="space-y-2 text-xs text-white/50"><li><a href="cookies.html" class="hover:text-white transition">Política de Cookies</a></li><li><a href="privacidad.html" class="hover:text-white transition">Privacidad</a></li><li><a href="terminos.html" class="hover:text-white transition">Términos</a></li></ul></div>
+      </div>
+      <div class="pt-6 border-t border-white/10 text-center text-white/30 text-[10px]">Copyright © <span data-year>2026</span> Oyet SpA · Todos los derechos reservados.</div>
+    </div>
+  </footer>
+
+  <div id="cookie-banner" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
+    <div class="container-custom flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <p class="text-xs md:text-sm leading-relaxed max-w-3xl">Utilizamos cookies propias y de terceros para mejorar tu experiencia, analizar el tráfico y personalizar contenido. Puedes aceptar todas, rechazar las no esenciales o consultar nuestra <a href="cookies.html">Política de Cookies</a>.</p>
+      <div class="flex gap-2 flex-shrink-0">
+        <button id="cookie-reject" type="button" class="border border-white/40 text-white px-4 py-2 text-[11px] font-bold uppercase tracking-wider hover:bg-white/10">Solo esenciales</button>
+        <button id="cookie-accept" type="button" class="bg-white text-black px-4 py-2 text-[11px] font-bold uppercase tracking-wider hover:bg-white/90">Aceptar todas</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+  <script src="/assets/js/menu.js" defer></script>
+  <script src="/assets/js/contrast.js" defer></script>
+  <script src="/assets/js/cookies.js" defer></script>
+  <script src="/assets/js/forms.js" defer></script>
+  <script src="/assets/js/main.js" defer></script>
+</body>
+</html>
