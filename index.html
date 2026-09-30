@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="es-CL" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- Seguridad -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self';
+                 script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com https://cdn.jsdelivr.net;
+                 style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com https://cdn.jsdelivr.net;
+                 font-src 'self' https://fonts.gstatic.com data:;
+                 img-src 'self' data: https:;
+                 frame-src https://www.google.com https://www.google.com/maps;
+                 connect-src 'self' https:;
+                 object-src 'none';
+                 base-uri 'self';
+                 form-action 'self';">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+
+  <!-- SEO -->
+  <title>Oyet SpA | Equipos Mineros y Transporte Pesado en Chile</title>
+  <meta name="description" content="Oyet SpA: fabricación de carrocerías, tolvas, estanques aljibes y equipos mineros en Lampa, Chile. Aceros certificados y estándar industrial.">
+  <meta name="keywords" content="ingeniería minera, transporte pesado, carrocerías mineras, tolvas, estanques aljibes, Lampa, Chile, maestranza">
+  <meta name="author" content="Oyet SpA">
+  <meta name="theme-color" content="#000000">
+  <link rel="canonical" href="https://oyet.cl/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_CL">
+  <meta property="og:site_name" content="Oyet SpA">
+  <meta property="og:title" content="Oyet SpA | Equipos Mineros y Transporte Pesado">
+  <meta property="og:description" content="Fabricación de carrocerías, tolvas y estanques para minería e industria.">
+  <meta property="og:url" content="https://oyet.cl/">
+  <meta property="og:image" content="https://oyet.cl/assets/img/og-image.jpg">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Oyet SpA | Equipos Mineros">
+  <meta name="twitter:description" content="Fabricación de equipos para minería y transporte pesado en Chile.">
+  <meta name="twitter:image" content="https://oyet.cl/assets/img/og-image.jpg">
+
+  <!-- Favicon & manifest -->
+  <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/img/Logo-oyet-01.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+  <!-- Fuentes -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/print.css" media="print">
+
+  <!-- CDN con SRI -->
+  <script src="https://cdn.tailwindcss.com" defer></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Oyet SpA",
+    "image": "https://oyet.cl/assets/img/Logo-oyet-01.png",
+    "url": "https://oyet.cl",
+    "telephone": "+56992200717",
+    "email": "contacto@oyet.cl",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Camino Interior Santa Isabel #1400 Sitio N° 3",
+      "addressLocality": "Lampa",
+      "addressRegion": "Región Metropolitana",
+      "addressCountry": "CL"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -33.286907,
+      "longitude": -70.897052
+    },
+    "foundingDate": "2015-09",
+    "description": "Fabricación de equipos para minería y transporte de carga pesada.",
+    "sameAs": [
+      "https://www.linkedin.com/company/oyet-spa",
+      "https://www.instagram.com/oyet.spa/"
+    ]
+  }
+  </script>
+</head>
+<body class="bg-white text-black antialiased">
+
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+  <!-- HEADER -->
+  <header class="fixed w-full z-50 bg-white border-b border-black/10">
+    <div class="container-custom py-4 flex justify-between items-center">
+      <a href="/" class="flex-shrink-0" aria-label="Oyet SpA — Inicio">
+        <img src="/assets/img/Logo-oyet-01.png" alt="Oyet SpA" class="h-8 md:h-10 w-auto object-contain" width="160" height="40">
+      </a>
+
+      <nav class="hidden md:flex space-x-8 items-center" aria-label="Navegación principal">
+        <a href="/" class="text-[11px] font-bold uppercase tracking-wider text-black hover:opacity-60 border-b-2 border-black" aria-current="page">Inicio</a>
+        <a href="empresa.html" class="text-[11px] font-bold uppercase tracking-wider text-black hover:opacity-60">Empresa</a>
+        <a href="productos.html" class="text-[11px] font-bold uppercase tracking-wider text-black hover:opacity-60">Productos</a>
+        <a href="servicios.html" class="text-[11px] font-bold uppercase tracking-wider text-black hover:opacity-60">Servicios</a>
+        <a href="clientes.html" class="text-[11px] font-bold uppercase tracking-wider text-black hover:opacity-60">Clientes</a>
+      </nav>
+
+      <div class="hidden md:flex items-center gap-4">
+        <a href="contacto.html" class="text-[11px] font-bold uppercase tracking-wider text-black hover:opacity-60">Contacto</a>
+        <a href="cotizar.html" class="bg-black text-white text-[11px] font-bold uppercase tracking-wider px-5 py-3 shadow-md hover:bg-black/80">Cotizar</a>
+        <button id="contrast-toggle" type="button" class="text-[11px] font-bold uppercase tracking-wider text-black hover:opacity-60 px-2 py-1 border border-black/20" aria-label="Alternar modo alto contraste">🌓 Contraste</button>
+      </div>
+
+      <button id="mobile-menu-button" type="button" class="md:hidden text-black focus:outline-none" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          <path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-black/10 w-full">
+      <div class="container-custom py-4 flex flex-col space-y-3">
+        <a href="/" class="mobile-link py-2 text-sm font-bold uppercase tracking-wider text-black border-b-2 border-black">Inicio</a>
+        <a href="empresa.html" class="mobile-link py-2 text-sm font-bold uppercase tracking-wider text-black">Empresa</a>
+        <a href="productos.html" class="mobile-link py-2 text-sm font-bold uppercase tracking-wider text-black">Productos</a>
+        <a href="servicios.html" class="mobile-link py-2 text-sm font-bold uppercase tracking-wider text-black">Servicios</a>
+        <a href="clientes.html" class="mobile-link py-2 text-sm font-bold uppercase tracking-wider text-black">Clientes</a>
+        <a href="contacto.html" class="mobile-link py-2 text-sm font-bold uppercase tracking-wider text-black">Contacto</a>
+        <a href="cotizar.html" class="mobile-link bg-black text-white text-center py-3 text-sm font-bold uppercase tracking-wider">Cotizar</a>
+        <button id="contrast-toggle-mobile" type="button" class="bg-black/10 text-black text-center py-3 text-sm font-bold uppercase tracking-wider w-full mt-2">🌓 Modo Contraste</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- HERO -->
+    <section class="relative h-screen min-h-[600px] overflow-hidden" aria-label="Presentación">
+      <div class="swiper hero-swiper absolute inset-0 w-full h-full z-0">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="absolute inset-0 bg-black/40 z-10"></div>
+            <div class="swiper-slide-bg w-full h-full bg-cover bg-center" style="background-image:url('/assets/img/estanque-verde.png');" role="img" aria-label="Estanque verde industrial"></div>
+          </div>
+          <div class="swiper-slide">
+            <div class="absolute inset-0 bg-black/40 z-10"></div>
+            <div class="swiper-slide-bg w-full h-full bg-cover bg-center" style="background-image:url('/assets/img/carroceria-amarilla.png');" role="img" aria-label="Carrocería amarilla"></div>
+          </div>
+          <div class="swiper-slide">
+            <div class="absolute inset-0 bg-black/40 z-10"></div>
+            <div class="swiper-slide-bg w-full h-full bg-cover bg-center" style="background-image:url('/assets/img/algibe-salmon.png');" role="img" aria-label="Aljibe salmón"></div>
+          </div>
+          <div class="swiper-slide">
+            <div class="absolute inset-0 bg-black/40 z-10"></div>
+            <div class="swiper-slide-bg w-full h-full bg-cover bg-center" style="background-image:url('/assets/img/tolva-blanca.png');" role="img" aria-label="Tolva blanca"></div>
+          </div>
+        </div>
+      </div>
+      <div class="relative z-20 container-custom h-full flex items-center">
+        <div class="max-w-2xl" data-aos="fade-right">
+          <span class="text-white/70 text-[10px] font-bold uppercase tracking-wider">Oyet · Desde 2015</span>
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-white uppercase leading-tight tracking-tight mt-4 mb-6">Equipos y Accesorios<br>para Transporte<br>de Carga Pesada.</h1>
+          <p class="text-white/80 text-sm md:text-base mb-8 leading-relaxed max-w-md">Impulsamos el transporte de carga pesada con soluciones confiables e innovadoras.</p>
+          <div class="flex flex-wrap gap-4">
+            <a href="productos.html" class="bg-white text-black px-6 py-3 text-xs font-bold uppercase tracking-wider hover:bg-white/90">Ver productos</a>
+            <a href="contacto.html" class="border border-white text-white px-6 py-3 text-xs font-bold uppercase tracking-wider hover:bg-white hover:text-black transition">Contactar</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="border-y border-black/10 bg-white py-8" aria-label="Cifras de la empresa">
+      <div class="container-custom">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          <div><div class="text-3xl md:text-4xl font-black text-black">+14</div><div class="text-[10px] uppercase tracking-wider text-black/50 mt-1">Años de experiencia</div></div>
+          <div><div class="text-3xl md:text-4xl font-black text-black">2.100</div><div class="text-[10px] uppercase tracking-wider text-black/50 mt-1">m² de galpón técnico</div></div>
+          <div><div class="text-3xl md:text-4xl font-black text-black">+12.000</div><div class="text-[10px] uppercase tracking-wider text-black/50 mt-1">Toneladas procesadas</div></div>
+          <div><div class="text-3xl md:text-4xl font-black text-black">100%</div><div class="text-[10px] uppercase tracking-wider text-black/50 mt-1">Estándar Industrial</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTOS DESTACADOS -->
+    <section id="productos-tecnicos" class="py-20 bg-white scroll-mt-24" aria-labelledby="productos-title">
+      <div class="container-custom">
+        <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+          <span class="text-black/50 text-[10px] font-bold uppercase tracking-wider">Diseño de productos a medida</span>
+          <h2 id="productos-title" class="text-3xl md:text-4xl font-black text-black mt-2 tracking-tight">Equipos fabricados para sus necesidades</h2>
+          <p class="text-black/60 text-sm mt-4">Aceros certificados y componentes hidráulicos de calidad.</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+          <a href="/productos-detalle/remolques.html" class="border border-black/10 p-6 hover:shadow-lg transition-all block" data-aos="fade-up" data-aos-delay="100">
+            <div class="h-48 bg-black/5 mb-6 overflow-hidden">
+              <img src="/assets/img/algibe-salmon.png" alt="Remolques industriales" class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
+            </div>
+            <h3 class="text-xl font-bold text-black mb-2">Remolques</h3>
+            <p class="text-black/60 text-sm mb-4">30.000 L, rompeolas internos, sistema de riego integrado.</p>
+          </a>
+          <a href="/productos-detalle/semirremolques.html" class="border border-black/10 p-6 hover:shadow-lg transition-all block" data-aos="fade-up">
+            <div class="h-48 bg-black/5 mb-6 overflow-hidden">
+              <img src="/assets/img/carroceria-amarilla.png" alt="Semirremolques de gran tonelaje" class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
+            </div>
+            <h3 class="text-xl font-bold text-black mb-2">Semirremolques</h3>
+            <p class="text-black/60 text-sm mb-4">Para gran tonelaje, contrapesos o bobinas. Acero estructural.</p>
+          </a>
+          <a href="/productos-detalle/equipos-especiales.html" class="border border-black/10 p-6 hover:shadow-lg transition-all block" data-aos="fade-up" data-aos-delay="200">
+            <div class="h-48 bg-black/5 mb-6 overflow-hidden">
+              <img src="/assets/img/tolva-blanca.png" alt="Equipos especiales y tolvas" class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
+            </div>
+            <h3 class="text-xl font-bold text-black mb-2">Equipos Especiales</h3>
+            <p class="text-black/60 text-sm mb-4">Acero Hardox, cilindros hidráulicos de alta presión.</p>
+          </a>
+        </div>
+        <div class="text-center mt-12">
+          <a href="productos.html" class="inline-block bg-black text-white px-8 py-3 text-xs font-bold uppercase tracking-wider hover:bg-black/80">Ver todos los productos →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUIENES SOMOS -->
+    <section id="quienes-somos" class="py-20 bg-white scroll-mt-24" aria-labelledby="empresa-title">
+      <div class="container-custom">
+        <div class="max-w-3xl mx-auto text-center mb-12" data-aos="fade-up">
+          <span class="text-black/50 text-[10px] font-bold uppercase tracking-wider">Trayectoria e ingeniería</span>
+          <h2 id="empresa-title" class="text-3xl md:text-4xl font-black text-black mt-2 tracking-tight">Oyet Industrial</h2>
+          <p class="text-black/60 text-sm mt-4">Especialistas en equipos fijos y móviles para minería y transporte pesado.</p>
+          <div class="mt-6">
+            <a href="empresa.html" class="inline-block text-black border-b border-black pb-1 text-sm font-bold uppercase tracking-wider hover:opacity-60">Conoce más →</a>
+          </div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div data-aos="fade-right">
+            <p class="text-black/70 text-sm leading-relaxed mb-4">Fundada en <strong class="text-black">septiembre de 2015</strong>, Oyet SpA nace para satisfacer las demandas de equipos de alta ingeniería para el sector del transporte pesado y la minería a nivel nacional.</p>
+            <p class="text-black/70 text-sm leading-relaxed mb-4">Nos orientamos a ofrecer un <strong class="text-black">servicio integral de vanguardia</strong>. Destacamos en el mercado por el diseño de estructuras con bajos pesos, el uso de aceros de resistencia certificada y componentes mecánicos de la más alta calidad global.</p>
+            <p class="text-black/70 text-sm leading-relaxed">Nuestros pilares son la <strong class="text-black">tecnología y seguridad</strong>, la <strong class="text-black">sostenibilidad</strong> y la <strong class="text-black">satisfacción del cliente</strong> con soporte técnico en terreno.</p>
+          </div>
+          <div class="grid grid-cols-2 gap-6" data-aos="fade-left">
+            <div class="border border-black/10 p-6 text-center"><div class="text-2xl font-black text-black mb-2">2015</div><div class="text-[10px] uppercase tracking-wider text-black/50">Año de Fundación</div></div>
+            <div class="border border-black/10 p-6 text-center"><div class="text-2xl font-black text-black mb-2">100%</div><div class="text-[10px] uppercase tracking-wider text-black/50">Estándar Industrial</div></div>
+            <div class="border border-black/10 p-6 text-center"><div class="text-2xl font-black text-black mb-2">24/7</div><div class="text-[10px] uppercase tracking-wider text-black/50">Soporte Técnico</div></div>
+            <div class="border border-black/10 p-6 text-center"><div class="text-2xl font-black text-black mb-2">ISO</div><div class="text-[10px] uppercase tracking-wider text-black/50">Calidad Certificada</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-20 bg-white" aria-labelledby="faq-title">
+      <div class="container-custom max-w-3xl mx-auto">
+        <div class="text-center mb-12" data-aos="fade-up">
+          <span class="text-black/50 text-[10px] font-bold uppercase tracking-wider">FAQ</span>
+          <h2 id="faq-title" class="text-3xl md:text-4xl font-black text-black mt-2 tracking-tight">Preguntas Frecuentes</h2>
+        </div>
+        <div class="space-y-4">
+          <div class="border border-black/10 faq-item">
+            <button type="button" class="faq-question w-full text-left p-4 font-bold text-black flex justify-between items-center hover:bg-black/5 transition" aria-expanded="false">
+              <span>¿Cuál es el tiempo de fabricación de un equipo?</span>
+              <svg class="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="faq-answer px-4 pb-4 text-black/60 text-sm">Los plazos estándar son de 4 a 8 semanas, dependiendo de la complejidad y especificaciones del proyecto.</div>
+          </div>
+          <div class="border border-black/10 faq-item">
+            <button type="button" class="faq-question w-full text-left p-4 font-bold text-black flex justify-between items-center hover:bg-black/5 transition" aria-expanded="false">
+              <span>¿Ofrecen garantía en sus equipos?</span>
+              <svg class="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="faq-answer px-4 pb-4 text-black/60 text-sm">Sí, todos nuestros equipos cuentan con 1 año de garantía contra defectos de fabricación.</div>
+          </div>
+          <div class="border border-black/10 faq-item">
+            <button type="button" class="faq-question w-full text-left p-4 font-bold text-black flex justify-between items-center hover:bg-black/5 transition" aria-expanded="false">
+              <span>¿Realizan despacho a regiones?</span>
+              <svg class="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="faq-answer px-4 pb-4 text-black/60 text-sm">Sí, coordinamos transporte especializado a todo Chile, con seguros de carga incluidos.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COTIZACIÓN -->
+    <section id="Solicitar-cotizacion" class="py-20 bg-white scroll-mt-24" aria-labelledby="cotizar-title">
+      <div class="container-custom">
+        <div class="grid md:grid-cols-2 gap-12 border border-black/10 p-8 md:p-12">
+          <div>
+            <span class="text-black/50 text-[10px] font-bold uppercase tracking-wider">Solicitar</span>
+            <h2 id="cotizar-title" class="text-3xl md:text-4xl font-black text-black mt-2 mb-6 tracking-tight">Cotización</h2>
+            <p class="text-black/60 text-sm mb-8">Complete el formulario para que nuestro departamento de ingeniería evalúe los requerimientos técnicos de su proyecto.</p>
+            <div class="mt-6">
+              <a href="cotizar.html" class="inline-block bg-black text-white px-6 py-2 text-xs font-bold uppercase tracking-wider hover:bg-black/80">Ir al formulario →</a>
+            </div>
+          </div>
+          <div>
+            <form action="/api/cotizar" method="POST" class="space-y-4" data-oyet-form novalidate>
+              <input type="text" name="nombre" placeholder="Nombre Completo" required autocomplete="name" class="w-full border border-black/20 p-3 text-sm focus:outline-none focus:border-black">
+              <input type="text" name="rut" placeholder="RUT Empresa" autocomplete="off" class="w-full border border-black/20 p-3 text-sm focus:outline-none focus:border-black">
+              <input type="email" name="email" placeholder="Email Corporativo" required autocomplete="email" class="w-full border border-black/20 p-3 text-sm focus:outline-none focus:border-black">
+              <input type="tel" name="telefono" placeholder="Teléfono / WhatsApp" autocomplete="tel" class="w-full border border-black/20 p-3 text-sm focus:outline-none focus:border-black">
+              <select name="tipo" required class="w-full border border-black/20 p-3 text-sm focus:outline-none focus:border-black">
+                <option value="">Tipo de Equipo</option>
+                <option value="carroceria">Carrocería Reforzada</option>
+                <option value="estanque">Estanque Aljibe</option>
+                <option value="tolva">Tolva / Batea</option>
+                <option value="hidraulico">Sistema Hidráulico</option>
+              </select>
+              <textarea name="detalles" rows="3" placeholder="Detalles del Proyecto (capacidades, toneladas...)" class="w-full border border-black/20 p-3 text-sm focus:outline-none focus:border-black"></textarea>
+              <!-- Honeypot antispam -->
+              <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+              <button type="submit" class="w-full bg-black text-white py-3 text-xs font-bold uppercase tracking-wider hover:bg-black/80">Enviar consulta</button>
+              <p class="text-[10px] text-black/50 leading-relaxed">Al enviar aceptas nuestra <a href="privacidad.html" class="underline">Política de Privacidad</a>.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="py-20 bg-white scroll-mt-24" aria-labelledby="contacto-title">
+      <div class="container-custom">
+        <div class="text-center mb-12">
+          <h2 id="contacto-title" class="text-3xl md:text-4xl font-black text-black tracking-tight">Contacto</h2>
+        </div>
+        <div class="grid md:grid-cols-2 gap-12">
+          <div class="space-y-6">
+            <div class="flex items-center gap-4 border border-black/10 p-5">
+              <span class="text-2xl" aria-hidden="true">📍</span>
+              <div>
+                <p class="font-bold text-black uppercase text-[10px] tracking-wider">Ubicación</p>
+                <p class="text-black/60 text-sm">Camino Interior Santa Isabel #1400 Sitio N° 3, Lampa, Santiago.</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4 border border-black/10 p-5">
+              <span class="text-2xl" aria-hidden="true">📞</span>
+              <div>
+                <p class="font-bold text-black uppercase text-[10px] tracking-wider">Ventas y Proyectos</p>
+                <p class="text-black/60 text-sm"><a href="tel:+56992200717">+56 9 9220 0717</a></p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4 border border-black/10 p-5">
+              <span class="text-2xl" aria-hidden="true">✉️</span>
+              <div>
+                <p class="font-bold text-black uppercase text-[10px] tracking-wider">Correo Corporativo</p>
+                <p class="text-black/60 text-sm">contacto [at] oyet [dot] cl</p>
+              </div>
+            </div>
+            <div class="mt-6">
+              <a href="contacto.html" class="inline-block text-black border-b border-black pb-1 text-sm font-bold uppercase tracking-wider hover:opacity-60">Ver más contacto →</a>
+            </div>
+          </div>
+          <div class="h-64 md:h-80 overflow-hidden border border-black/10">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d106727.0395028756!2d-70.89705235995567!3d-33.28690740900516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662bd00181cfbfb%3A0xd1d66eedfaea4e45!2sTerreno%20Industrial%2C%20Lampa!5e0!3m2!1ses!2scl!4v1776220605971!5m2!1ses!2scl" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicación Oyet SpA en Lampa"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-black text-white py-12 border-t border-white/10">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <img src="/assets/img/Logo-oyet-01.png" alt="Oyet SpA" class="h-8 w-auto object-contain filter brightness-0 invert mb-4" width="120" height="32" loading="lazy">
+          <p class="text-white/50 text-xs leading-relaxed">Empresa metalúrgica especializada en equipos para minería y transporte pesado desde 2015.</p>
+        </div>
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider mb-4">Secciones</h4>
+          <ul class="space-y-2 text-xs text-white/50">
+            <li><a href="/" class="hover:text-white transition">Inicio</a></li>
+            <li><a href="empresa.html" class="hover:text-white transition">Empresa</a></li>
+            <li><a href="productos.html" class="hover:text-white transition">Productos</a></li>
+            <li><a href="contacto.html" class="hover:text-white transition">Contacto</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider mb-4">Servicios</h4>
+          <ul class="space-y-2 text-xs text-white/50">
+            <li><a href="productos.html" class="hover:text-white transition">Carrocerías</a></li>
+            <li><a href="productos.html" class="hover:text-white transition">Estanques</a></li>
+            <li><a href="productos.html" class="hover:text-white transition">Tolvas</a></li>
+            <li><a href="servicios.html" class="hover:text-white transition">Sistemas Hidráulicos</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider mb-4">Legal</h4>
+          <ul class="space-y-2 text-xs text-white/50">
+            <li><a href="cookies.html" class="hover:text-white transition">Política de Cookies</a></li>
+            <li><a href="privacidad.html" class="hover:text-white transition">Privacidad</a></li>
+            <li><a href="terminos.html" class="hover:text-white transition">Términos</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="flex flex-col md:flex-row justify-between items-center pt-6 border-t border-white/10 gap-4">
+        <p class="text-white/30 text-[10px]">Copyright © <span data-year>2026</span> Oyet SpA · Todos los derechos reservados.</p>
+        <div class="flex items-center gap-4">
+          <a href="https://www.linkedin.com/company/oyet-spa" target="_blank" rel="noopener noreferrer" class="w-8 h-8 bg-white/10 hover:bg-red-600 text-white flex items-center justify-center transition-all duration-300 hover:scale-110" aria-label="LinkedIn de Oyet SpA">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/oyet.spa/" target="_blank" rel="noopener noreferrer" class="w-8 h-8 bg-white/10 hover:bg-red-600 text-white flex items-center justify-center transition-all duration-300 hover:scale-110" aria-label="Instagram de Oyet SpA">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6m5.4 3a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m5-2.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"/></svg>
+          </a>
+          <a href="https://wa.me/56992200717" target="_blank" rel="noopener noreferrer" class="w-8 h-8 bg-white/10 hover:bg-red-600 text-white flex items-center justify-center transition-all duration-300 hover:scale-110" aria-label="WhatsApp Oyet SpA">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm5.72 14.03c-.24.68-1.4 1.25-1.9 1.32-.43.06-.98.11-2.95-.67-2.52-1-4.15-3.57-4.28-3.74-.12-.17-1.02-1.36-1.02-2.59 0-1.23.64-1.83.87-2.08.24-.25.53-.31.71-.31.18 0 .35.01.5.02.16.01.37-.06.58.45.21.52.73 1.79.79 1.92.06.13.1.28.01.45-.09.18-.13.28-.27.45-.14.16-.29.36-.42.49-.14.14-.3.29-.13.58.17.29.75 1.24 1.6 2 1.1 1 2.03 1.31 2.32 1.45.29.14.46.12.63-.08.17-.2.73-.85.93-1.14.2-.29.39-.24.66-.14.27.1.1.2 1.37.84.27.13.44.2.51.32.06.12.06.69-.18 1.37z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- COOKIE BANNER -->
+  <div id="cookie-banner" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
+    <div class="container-custom flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <p class="text-xs md:text-sm leading-relaxed max-w-3xl">
+        Utilizamos cookies propias y de terceros para mejorar tu experiencia, analizar el tráfico y personalizar contenido. Puedes aceptar todas, rechazar las no esenciales o consultar nuestra <a href="cookies.html">Política de Cookies</a>.
+      </p>
+      <div class="flex gap-2 flex-shrink-0">
+        <button id="cookie-reject" type="button" class="border border-white/40 text-white px-4 py-2 text-[11px] font-bold uppercase tracking-wider hover:bg-white/10">Solo esenciales</button>
+        <button id="cookie-accept" type="button" class="bg-white text-black px-4 py-2 text-[11px] font-bold uppercase tracking-wider hover:bg-white/90">Aceptar todas</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+  <script src="/assets/js/menu.js" defer></script>
+  <script src="/assets/js/contrast.js" defer></script>
+  <script src="/assets/js/faq.js" defer></script>
+  <script src="/assets/js/cookies.js" defer></script>
+  <script src="/assets/js/forms.js" defer></script>
+  <script src="/assets/js/main.js" defer></script>
+</body>
+</html>

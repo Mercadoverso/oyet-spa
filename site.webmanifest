@@ -1,0 +1,14 @@
+{
+  "name": "Oyet SpA — Equipos Mineros",
+  "short_name": "Oyet",
+  "description": "Fabricación de equipos para minería y transporte pesado en Chile.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "lang": "es-CL",
+  "icons": [
+    { "src": "/assets/img/favicon.ico", "sizes": "any", "type": "image/x-icon" },
+    { "src": "/assets/img/Logo-oyet-01.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

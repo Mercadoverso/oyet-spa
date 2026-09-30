@@ -1,0 +1,248 @@
+/* ============================================================
+   OYET SPA — Estilos principales
+   Autor: Equipo Oyet
+   ============================================================ */
+
+:root {
+  --oyet-black: #000000;
+  --oyet-white: #ffffff;
+  --oyet-gray-50: #fafafa;
+  --oyet-gray-100: #f5f5f5;
+  --oyet-gray-200: #e5e5e5;
+  --oyet-gray-400: #a3a3a3;
+  --oyet-gray-600: #525252;
+  --oyet-gray-900: #171717;
+  --oyet-red: #dc2626;
+  --oyet-border: rgba(0, 0, 0, 0.1);
+  --oyet-transition: all 0.2s ease;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+html,
+body {
+  background-color: var(--oyet-white);
+  max-width: 100%;
+  overflow-x: hidden;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: var(--oyet-black);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+}
+
+/* ===== Esquinas rectas (línea gráfica) ===== */
+*[class*="rounded"] {
+  border-radius: 0 !important;
+}
+
+/* ===== Swiper Hero ===== */
+.hero-swiper,
+.swiper-slide {
+  background-color: var(--oyet-black) !important;
+}
+
+.swiper-slide-bg {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.4) contrast(1.1);
+}
+
+/* ===== Contenedor ===== */
+.container-custom {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .container-custom {
+    padding: 0 1rem;
+  }
+}
+
+/* ===== Enlaces y botones ===== */
+a,
+button {
+  transition: var(--oyet-transition);
+}
+
+a:hover,
+button:hover {
+  opacity: 0.8;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--oyet-black);
+  outline-offset: 2px;
+}
+
+/* ===== FAQ ===== */
+.faq-answer {
+  display: none;
+}
+
+.faq-answer.is-open {
+  display: block;
+}
+
+/* ===== Accesibilidad ===== */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 999;
+  background: var(--oyet-black);
+  color: var(--oyet-white);
+  padding: 0.75rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ===== ALTO CONTRASTE ===== */
+.high-contrast,
+.high-contrast body {
+  background-color: #000 !important;
+}
+
+.high-contrast header,
+.high-contrast footer,
+.high-contrast section,
+.high-contrast .bg-white,
+.high-contrast .border-y,
+.high-contrast .container-custom {
+  background-color: #000 !important;
+}
+
+.high-contrast h1,
+.high-contrast h2,
+.high-contrast h3,
+.high-contrast h4,
+.high-contrast p,
+.high-contrast span,
+.high-contrast li,
+.high-contrast a:not(.bg-white),
+.high-contrast button:not(.bg-white) {
+  color: #fff !important;
+}
+
+.high-contrast .border-black\/10,
+.high-contrast .border-black\/20,
+.high-contrast .border {
+  border-color: #333 !important;
+}
+
+.high-contrast .bg-black\/5,
+.high-contrast .bg-black\/10 {
+  background-color: #111 !important;
+}
+
+.high-contrast .text-black,
+.high-contrast .text-black\/50,
+.high-contrast .text-black\/60,
+.high-contrast .text-black\/70,
+.high-contrast .text-black\/80,
+.high-contrast .text-slate-600,
+.high-contrast .text-slate-500 {
+  color: #fff !important;
+}
+
+.high-contrast button.bg-white,
+.high-contrast a.bg-white {
+  background-color: #fff !important;
+  color: #000 !important;
+}
+
+.high-contrast .swiper-slide-bg {
+  filter: brightness(0.9) contrast(1.1) !important;
+}
+
+/* ===== Cookies banner ===== */
+#cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #000;
+  color: #fff;
+  padding: 1.25rem 1.5rem;
+  z-index: 9999;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  transform: translateY(100%);
+  transition: transform 0.35s ease;
+}
+
+#cookie-banner.is-visible {
+  transform: translateY(0);
+}
+
+#cookie-banner a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* ===== Formularios ===== */
+input.honeypot,
+textarea.honeypot {
+  position: absolute !important;
+  left: -9999px !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+input:invalid:not(:placeholder-shown),
+textarea:invalid:not(:placeholder-shown) {
+  border-color: var(--oyet-red) !important;
+}
+
+/* ===== Imágenes ===== */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ===== Print ===== */
+@media print {
+  header, footer, #cookie-banner, .no-print {
+    display: none !important;
+  }
+  body {
+    color: #000;
+    background: #fff;
+  }
+}

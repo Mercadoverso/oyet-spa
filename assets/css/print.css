@@ -1,0 +1,13 @@
+@media print {
+  * {
+    background: #fff !important;
+    color: #000 !important;
+    box-shadow: none !important;
+  }
+  header, footer, #cookie-banner, .no-print, .skip-link {
+    display: none !important;
+  }
+  a { text-decoration: underline; }
+  a[href]::after { content: " (" attr(href) ")"; font-size: 0.85em; }
+  img { page-break-inside: avoid; }
+}
