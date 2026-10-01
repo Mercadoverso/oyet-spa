@@ -40,3 +40,5 @@ temp/
 # Backups
 *.bak
 *.backup
+backup-html/
+backup-html-2/
