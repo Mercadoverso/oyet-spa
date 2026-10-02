@@ -4,37 +4,205 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; frame-src https://www.google.com; connect-src 'self' https:; object-src 'none'; base-uri 'self'; form-action 'self';">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; frame-src https://www.google.com; connect-src 'self' https:; object-src 'none'; base-uri 'self'; form-action 'self';">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <title>Productos | Oyet SpA — Carrocerías, Estanques, Tolvas y Semirremolques</title>
-  <meta name="description" content="Catálogo de productos Oyet SpA: carrocerías mineras, estanques sobre camión, tolvas, semirremolques. Fichas técnicas descargables en PDF.">
+  <meta name="description" content="Catálogo de productos Oyet SpA: carrocería minera de lubricación, carrocería para servicio, estanque sobre camión, semirremolque plano o rebajado y tolva sobre camión. Fichas técnicas descargables.">
   <meta name="keywords" content="carrocería minera, estanque sobre camión, tolva, semirremolque plano, fabricación Chile">
   <meta name="author" content="Oyet SpA">
   <meta name="theme-color" content="#000000">
   <link rel="canonical" href="https://oyet.cl/productos.html">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_CL">
+  <meta property="og:site_name" content="Oyet SpA">
   <meta property="og:title" content="Productos | Oyet SpA">
   <meta property="og:description" content="Catálogo industrial con fichas técnicas descargables.">
   <meta property="og:url" content="https://oyet.cl/productos.html">
   <meta property="og:image" content="https://oyet.cl/assets/img/og-image.jpg">
-  <link rel="icon" href="/assets/img/favicon.ico">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Productos | Oyet SpA">
+  <meta name="twitter:description" content="Catálogo industrial con fichas técnicas descargables.">
+  <meta name="twitter:image" content="https://oyet.cl/assets/img/og-image.jpg">
+  <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/img/Logo-oyet-01.png">
   <link rel="manifest" href="/site.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/tailwind-compiled.css">
-<link rel="stylesheet" href="/assets/css/main.css">
-<link rel="stylesheet" href="/assets/css/print.css" media="print">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/print.css" media="print">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    .product-modal {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .product-modal.hidden { display: none; }
+
+    .product-modal .modal-content {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 64rem;
+      height: 90vh;
+      max-height: 90vh;
+      background: #fff;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+      overflow: hidden;
+    }
+
+    .product-modal .modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+    }
+
+    .product-modal .modal-topbar {
+      flex: 0 0 auto;
+      background: #000;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .product-modal .modal-body {
+      flex: 1 1 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      min-height: 0;
+    }
+    @media (min-width: 768px) {
+      .product-modal .modal-body { grid-template-columns: 1.05fr 1fr; }
+    }
+
+    .product-modal .modal-figure {
+      background: #f5f5f5;
+      overflow: hidden;
+      margin: 0;
+      position: relative;
+      max-height: 15rem;
+      cursor: grab;
+      user-select: none;
+      touch-action: none;
+    }
+    .product-modal .modal-figure.dragging { cursor: grabbing; }
+    @media (min-width: 768px) {
+      .product-modal .modal-figure {
+        max-height: none;
+        height: 100%;
+        min-height: 100%;
+      }
+    }
+    .product-modal .modal-figure img {
+      display: block;
+      max-width: none;
+      max-height: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      user-select: none;
+      -webkit-user-drag: none;
+      pointer-events: none;
+    }
+
+    .product-modal .modal-info { padding: 1.5rem; }
+    @media (min-width: 768px) {
+      .product-modal .modal-info { padding: 2rem 2.5rem; }
+    }
+
+    .product-modal .spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem 1rem;
+      padding: 1rem 0;
+      border-top: 1px solid rgba(0,0,0,0.1);
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      margin-bottom: 1.25rem;
+    }
+    @media (min-width: 640px) {
+      .product-modal .spec-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    .product-modal .spec-grid .label {
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(0,0,0,0.5);
+      margin-bottom: 0.15rem;
+    }
+    .product-modal .spec-grid .value {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #000;
+    }
+
+    .product-modal .spec-block + .spec-block {
+      margin-top: 1.25rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(0,0,0,0.08);
+    }
+    .product-modal .spec-block h4 {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #000;
+      margin-bottom: 0.5rem;
+    }
+    .product-modal .spec-block p {
+      font-size: 0.85rem;
+      color: rgba(0,0,0,0.65);
+      line-height: 1.55;
+      margin: 0;
+    }
+    .product-modal .spec-block ul {
+      list-style: disc;
+      padding-left: 1.1rem;
+      font-size: 0.85rem;
+      color: rgba(0,0,0,0.65);
+      line-height: 1.55;
+      margin: 0;
+    }
+    .product-modal .spec-block li + li { margin-top: 0.25rem; }
+
+    body.modal-open { overflow: hidden; }
+
+    .product-modal .modal-body::-webkit-scrollbar { width: 8px; }
+    .product-modal .modal-body::-webkit-scrollbar-track { background: #f0f0f0; }
+    .product-modal .modal-body::-webkit-scrollbar-thumb { background: #c0c0c0; }
+    .product-modal .modal-body::-webkit-scrollbar-thumb:hover { background: #909090; }
+
+    @media print {
+      .product-modal .modal-topbar { display: none !important; }
+    }
+  </style>
 </head>
 <body class="bg-white text-black antialiased">
+
   <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
   <header class="fixed w-full z-50 bg-white border-b border-black/10">
     <div class="container-custom py-4 flex justify-between items-center">
-      <a href="/" class="flex-shrink-0" aria-label="Oyet SpA — Inicio"><img src="/assets/img/Logo-oyet-01.png" alt="Oyet SpA" class="h-8 md:h-10 w-auto object-contain"></a>
+      <a href="/" class="flex-shrink-0" aria-label="Oyet SpA — Inicio">
+        <img src="/assets/img/Logo-oyet-01.png" alt="Oyet SpA" class="h-8 md:h-10 w-auto object-contain" width="160" height="40">
+      </a>
+
       <nav class="hidden md:flex space-x-8 items-center" aria-label="Navegación principal">
         <a href="/" class="text-[11px] font-bold uppercase tracking-wider text-black hover:opacity-60">Inicio</a>
         <a href="empresa.html" class="text-[11px] font-bold uppercase tracking-wider text-black hover:opacity-60">Empresa</a>
@@ -42,15 +210,21 @@
         <a href="servicios.html" class="text-[11px] font-bold uppercase tracking-wider text-black hover:opacity-60">Servicios</a>
         <a href="clientes.html" class="text-[11px] font-bold uppercase tracking-wider text-black hover:opacity-60">Clientes</a>
       </nav>
+
       <div class="hidden md:flex items-center gap-4">
         <a href="contacto.html" class="text-[11px] font-bold uppercase tracking-wider text-black hover:opacity-60">Contacto</a>
         <a href="cotizar.html" class="bg-black text-white text-[11px] font-bold uppercase tracking-wider px-5 py-3 shadow-md hover:bg-black/80">Cotizar</a>
         <button id="contrast-toggle" type="button" class="text-[11px] font-bold uppercase tracking-wider text-black hover:opacity-60 px-2 py-1 border border-black/20" aria-label="Alternar modo alto contraste">🌓 Contraste</button>
       </div>
+
       <button id="mobile-menu-button" type="button" class="md:hidden text-black focus:outline-none" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path><path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          <path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
       </button>
     </div>
+
     <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-black/10 w-full">
       <div class="container-custom py-4 flex flex-col space-y-3">
         <a href="/" class="mobile-link py-2 text-sm font-bold uppercase tracking-wider text-black">Inicio</a>
@@ -66,24 +240,23 @@
   </header>
 
   <main id="main-content">
-    <!-- HERO INTERNO -->
+
     <section class="pt-40 pb-20 bg-black text-white">
       <div class="container-custom" data-aos="fade-up">
         <span class="text-white/50 text-[10px] font-bold uppercase tracking-wider">Catálogo</span>
         <h1 class="text-4xl sm:text-5xl md:text-6xl font-black uppercase leading-tight tracking-tight mt-4">Productos</h1>
-        <p class="text-white/70 text-sm md:text-base mt-6 max-w-2xl leading-relaxed">Equipos fabricados a medida con aceros certificados y componentes de alta calidad. Descarga las fichas técnicas de cada modelo.</p>
+        <p class="text-white/70 text-sm md:text-base mt-6 max-w-2xl leading-relaxed">Equipos fabricados a medida con aceros certificados y componentes de alta calidad. Revisa el detalle técnico o descarga la ficha de cada modelo.</p>
       </div>
     </section>
 
-    <!-- GRID PRODUCTOS -->
-    <section class="py-20 bg-white">
+    <section class="py-20 bg-white" aria-label="Catálogo de productos">
       <div class="container-custom">
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-          <!-- 1. CARROCERÍA MINERA PARA LUBRICACIÓN -->
+          <!-- 1. CARROCERÍA MINERA PARA LUBRICACIÓN (CMLXX) -->
           <article class="border border-black/10 hover:shadow-lg transition-all flex flex-col" data-aos="fade-up">
-            <div class="h-56 bg-black/5 overflow-hidden">
-              <img src="/assets/img/algibe-amarillo.png" alt="Carrocería minera para lubricación" class="w-full h-full object-cover" loading="lazy" decoding="async">
+            <div class="h-48 bg-black/5 overflow-hidden">
+              <img src="/assets/img/algibe-amarillo.png" alt="Carrocería Minera para Lubricación" class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
             </div>
             <div class="p-6 flex-1 flex flex-col">
               <span class="text-black/40 text-[10px] font-bold uppercase tracking-wider">Modelo CMLXX</span>
@@ -93,18 +266,19 @@
                 <p>• Marca: OYet</p>
                 <p>• Modelo: CMLXX</p>
                 <p>• Capacidad: según requerimiento</p>
+                <p>• Tara: 7.500 a 12.800 kg</p>
               </div>
               <div class="flex flex-col sm:flex-row gap-2 mt-auto">
                 <a href="/fichas/carroceria-minera-lubricacion.pdf" download class="flex-1 text-center bg-black text-white px-4 py-3 text-[10px] font-bold uppercase tracking-wider hover:bg-black/80">📄 Descargar ficha</a>
-                <a href="cotizar.html" class="flex-1 text-center border border-black text-black px-4 py-3 text-[10px] font-bold uppercase tracking-wider hover:bg-black hover:text-white transition">Cotizar</a>
+                <button type="button" class="flex-1 text-center border border-black text-black px-4 py-3 text-[10px] font-bold uppercase tracking-wider hover:bg-black hover:text-white transition" data-modal-open="modal-cmlxx">Ver detalle</button>
               </div>
             </div>
           </article>
 
-          <!-- 2. CARROCERÍA PARA SERVICIO -->
+          <!-- 2. CARROCERÍA PARA SERVICIO (CMBXX) -->
           <article class="border border-black/10 hover:shadow-lg transition-all flex flex-col" data-aos="fade-up" data-aos-delay="100">
-            <div class="h-56 bg-black/5 overflow-hidden">
-              <img src="/assets/img/carroceria-amarilla.png" alt="Carrocería para servicio" class="w-full h-full object-cover" loading="lazy" decoding="async">
+            <div class="h-48 bg-black/5 overflow-hidden">
+              <img src="/assets/img/carroceria-amarilla.png" alt="Carrocería para Servicio" class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
             </div>
             <div class="p-6 flex-1 flex flex-col">
               <span class="text-black/40 text-[10px] font-bold uppercase tracking-wider">Modelo CMBXX</span>
@@ -118,15 +292,15 @@
               </div>
               <div class="flex flex-col sm:flex-row gap-2 mt-auto">
                 <a href="/fichas/carroceria-servicio.pdf" download class="flex-1 text-center bg-black text-white px-4 py-3 text-[10px] font-bold uppercase tracking-wider hover:bg-black/80">📄 Descargar ficha</a>
-                <a href="cotizar.html" class="flex-1 text-center border border-black text-black px-4 py-3 text-[10px] font-bold uppercase tracking-wider hover:bg-black hover:text-white transition">Cotizar</a>
+                <button type="button" class="flex-1 text-center border border-black text-black px-4 py-3 text-[10px] font-bold uppercase tracking-wider hover:bg-black hover:text-white transition" data-modal-open="modal-cmbxx">Ver detalle</button>
               </div>
             </div>
           </article>
 
-          <!-- 3. ESTANQUE SOBRE CAMIÓN -->
+          <!-- 3. ESTANQUE SOBRE CAMIÓN (ECAXX) -->
           <article class="border border-black/10 hover:shadow-lg transition-all flex flex-col" data-aos="fade-up" data-aos-delay="200">
-            <div class="h-56 bg-black/5 overflow-hidden">
-              <img src="/assets/img/algibe-salmon.png" alt="Estanque sobre camión" class="w-full h-full object-cover" loading="lazy" decoding="async">
+            <div class="h-48 bg-black/5 overflow-hidden">
+              <img src="/assets/img/algibe-salmon.png" alt="Estanque sobre Camión" class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
             </div>
             <div class="p-6 flex-1 flex flex-col">
               <span class="text-black/40 text-[10px] font-bold uppercase tracking-wider">Modelo ECAXX</span>
@@ -140,15 +314,15 @@
               </div>
               <div class="flex flex-col sm:flex-row gap-2 mt-auto">
                 <a href="/fichas/estanque-sobre-camion.pdf" download class="flex-1 text-center bg-black text-white px-4 py-3 text-[10px] font-bold uppercase tracking-wider hover:bg-black/80">📄 Descargar ficha</a>
-                <a href="cotizar.html" class="flex-1 text-center border border-black text-black px-4 py-3 text-[10px] font-bold uppercase tracking-wider hover:bg-black hover:text-white transition">Cotizar</a>
+                <button type="button" class="flex-1 text-center border border-black text-black px-4 py-3 text-[10px] font-bold uppercase tracking-wider hover:bg-black hover:text-white transition" data-modal-open="modal-ecaxx">Ver detalle</button>
               </div>
             </div>
           </article>
 
-          <!-- 4. SEMIRREMOLQUE PLANO O REBAJADO -->
+          <!-- 4. SEMIRREMOLQUE PLANO O REBAJADO (SPXXX) -->
           <article class="border border-black/10 hover:shadow-lg transition-all flex flex-col" data-aos="fade-up">
-            <div class="h-56 bg-black/5 overflow-hidden">
-              <img src="/assets/img/sistemas-hidraulicos.png" alt="Semirremolque plano o rebajado" class="w-full h-full object-cover" loading="lazy" decoding="async">
+            <div class="h-48 bg-black/5 overflow-hidden">
+              <img src="/assets/img/sistemas-hidraulicos.png" alt="Semirremolque Plano o Rebajado" class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
             </div>
             <div class="p-6 flex-1 flex flex-col">
               <span class="text-black/40 text-[10px] font-bold uppercase tracking-wider">Modelo SPXXX</span>
@@ -162,15 +336,15 @@
               </div>
               <div class="flex flex-col sm:flex-row gap-2 mt-auto">
                 <a href="/fichas/semiremolque-plano-rebajado.pdf" download class="flex-1 text-center bg-black text-white px-4 py-3 text-[10px] font-bold uppercase tracking-wider hover:bg-black/80">📄 Descargar ficha</a>
-                <a href="cotizar.html" class="flex-1 text-center border border-black text-black px-4 py-3 text-[10px] font-bold uppercase tracking-wider hover:bg-black hover:text-white transition">Cotizar</a>
+                <button type="button" class="flex-1 text-center border border-black text-black px-4 py-3 text-[10px] font-bold uppercase tracking-wider hover:bg-black hover:text-white transition" data-modal-open="modal-spxxx">Ver detalle</button>
               </div>
             </div>
           </article>
 
-          <!-- 5. TOLVA SOBRE CAMIÓN -->
+          <!-- 5. TOLVA SOBRE CAMIÓN (TCTXX) -->
           <article class="border border-black/10 hover:shadow-lg transition-all flex flex-col" data-aos="fade-up" data-aos-delay="100">
-            <div class="h-56 bg-black/5 overflow-hidden">
-              <img src="/assets/img/tolva-blanca.png" alt="Tolva sobre camión" class="w-full h-full object-cover" loading="lazy" decoding="async">
+            <div class="h-48 bg-black/5 overflow-hidden">
+              <img src="/assets/img/tolva-blanca.png" alt="Tolva sobre Camión" class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
             </div>
             <div class="p-6 flex-1 flex flex-col">
               <span class="text-black/40 text-[10px] font-bold uppercase tracking-wider">Modelo TCTXX</span>
@@ -184,7 +358,7 @@
               </div>
               <div class="flex flex-col sm:flex-row gap-2 mt-auto">
                 <a href="/fichas/tolva-sobre-camion.pdf" download class="flex-1 text-center bg-black text-white px-4 py-3 text-[10px] font-bold uppercase tracking-wider hover:bg-black/80">📄 Descargar ficha</a>
-                <a href="cotizar.html" class="flex-1 text-center border border-black text-black px-4 py-3 text-[10px] font-bold uppercase tracking-wider hover:bg-black hover:text-white transition">Cotizar</a>
+                <button type="button" class="flex-1 text-center border border-black text-black px-4 py-3 text-[10px] font-bold uppercase tracking-wider hover:bg-black hover:text-white transition" data-modal-open="modal-tctxx">Ver detalle</button>
               </div>
             </div>
           </article>
@@ -201,14 +375,12 @@
       </div>
     </section>
 
-    <!-- INFO FICHAS -->
     <section class="py-16 bg-white border-t border-black/10">
       <div class="container-custom text-center">
         <p class="text-black/60 text-sm">Todas las fichas técnicas están en formato PDF y son de libre descarga. Para especificaciones personalizadas, <a href="contacto.html" class="underline text-black font-bold">contáctanos</a>.</p>
       </div>
     </section>
 
-    <!-- CTA FINAL -->
     <section class="py-20 bg-black text-white">
       <div class="container-custom text-center">
         <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight mb-6">Cotiza tu equipo hoy</h2>
@@ -216,23 +388,427 @@
         <a href="cotizar.html" class="inline-block bg-white text-black px-8 py-3 text-xs font-bold uppercase tracking-wider hover:bg-white/90">Solicitar cotización →</a>
       </div>
     </section>
+
   </main>
+
+  <!-- ============================================================ -->
+  <!-- MODALES DE DETALLE TÉCNICO                                    -->
+  <!-- ============================================================ -->
+
+  <!-- MODAL 1: CARROCERÍA MINERA PARA LUBRICACIÓN (CMLXX) -->
+  <div id="modal-cmlxx" class="product-modal fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true" aria-labelledby="modal-cmlxx-title">
+    <div class="modal-backdrop absolute inset-0 bg-black/70" data-modal-close></div>
+    <div class="modal-content relative bg-white max-w-5xl mx-auto my-4 md:my-10 max-h-[95vh] md:max-h-[90vh] shadow-2xl overflow-hidden">
+      <div class="modal-topbar">
+        <button type="button" class="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider hover:opacity-70" data-modal-close>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+          Volver al catálogo
+        </button>
+        <span class="text-[10px] uppercase tracking-wider text-white/50 hidden sm:inline">Modelo CMLXX · OYet</span>
+        <button type="button" class="w-8 h-8 flex items-center justify-center hover:bg-white/10 transition" aria-label="Cerrar detalle" data-modal-close>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <figure class="modal-figure">
+          <img src="/assets/img/algibe-amarillo.png" alt="Carrocería Minera para Lubricación" loading="lazy" decoding="async">
+        </figure>
+        <div class="modal-info">
+          <h3 id="modal-cmlxx-title" class="text-2xl md:text-3xl font-black text-black tracking-tight leading-tight mb-4">Carrocería Minera para Lubricación</h3>
+          <div class="spec-grid">
+            <div><div class="label">Marca</div><div class="value">OYet</div></div>
+            <div><div class="label">Modelo</div><div class="value">CMLXX</div></div>
+            <div><div class="label">Tipo</div><div class="value">Lubricación</div></div>
+            <div><div class="label">Tara</div><div class="value">7.500–12.800 kg</div></div>
+          </div>
+          <div class="spec-block">
+            <h4>Descripción general</h4>
+            <p>Unidad especializada para transporte y distribución de lubricantes en faena minera, con compartimentos y sistema de bombeo integrado.</p>
+          </div>
+          <div class="spec-block">
+            <h4>Accesorios incluidos</h4>
+            <ul>
+              <li>Parachoques trasero según norma.</li>
+              <li>Sistema eléctrico con focos laterales tipo LED para iluminación reglamentaria.</li>
+              <li>2 cajas de herramientas de 1 m (plástico reforzado y metálica) con soportes a chasis para filtros nuevos y sucios.</li>
+              <li>Pasillo interno en malla antiderrape separada del piso.</li>
+              <li>Limpieza mecánica con tratamiento fosfatizado, dos manos de anticorrosivo epóxico y terminación doble mano de poliuretano de alta densidad en color a elección.</li>
+              <li>Huinchas reflexivas según norma.</li>
+              <li>KIT minero: baliza estroboscópica azul o ámbar, caja porta corta corriente, pértiga de 10 pies importada con luz LED, 4 cuñas de poliuretano con soportes, porta extintor 10 kg tipo gabinete y check wheel.</li>
+            </ul>
+          </div>
+          <div class="spec-block">
+            <h4>Garantía</h4>
+            <p>Un año por defectos de fabricación, no así por mal uso.</p>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-2 mt-6 pt-5 border-t border-black/10">
+            <a href="/fichas/carroceria-minera-lubricacion.pdf" download class="flex-1 text-center bg-black text-white px-5 py-3 text-[10px] font-bold uppercase tracking-wider hover:bg-black/80">📄 Descargar ficha</a>
+            <a href="cotizar.html" class="flex-1 text-center border border-black text-black px-5 py-3 text-[10px] font-bold uppercase tracking-wider hover:bg-black hover:text-white transition">Cotizar este equipo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: CARROCERÍA PARA SERVICIO (CMBXX) -->
+  <div id="modal-cmbxx" class="product-modal fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true" aria-labelledby="modal-cmbxx-title">
+    <div class="modal-backdrop absolute inset-0 bg-black/70" data-modal-close></div>
+    <div class="modal-content relative bg-white max-w-5xl mx-auto my-4 md:my-10 max-h-[95vh] md:max-h-[90vh] shadow-2xl overflow-hidden">
+      <div class="modal-topbar">
+        <button type="button" class="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider hover:opacity-70" data-modal-close>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+          Volver al catálogo
+        </button>
+        <span class="text-[10px] uppercase tracking-wider text-white/50 hidden sm:inline">Modelo CMBXX · OYet</span>
+        <button type="button" class="w-8 h-8 flex items-center justify-center hover:bg-white/10 transition" aria-label="Cerrar detalle" data-modal-close>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <figure class="modal-figure">
+          <img src="/assets/img/carroceria-amarilla.png" alt="Carrocería para Servicio" loading="lazy" decoding="async">
+        </figure>
+        <div class="modal-info">
+          <h3 id="modal-cmbxx-title" class="text-2xl md:text-3xl font-black text-black tracking-tight leading-tight mb-4">Carrocería para Servicio</h3>
+          <div class="spec-grid">
+            <div><div class="label">Marca</div><div class="value">OYet</div></div>
+            <div><div class="label">Modelo</div><div class="value">CMBXX</div></div>
+            <div><div class="label">Capacidad</div><div class="value">6–20 t</div></div>
+            <div><div class="label">Tara</div><div class="value">1.500–3.500 kg</div></div>
+          </div>
+          <div class="spec-block">
+            <h4>Descripción general</h4>
+            <p>Carrocería plana para servicio con barandas abatibles.</p>
+          </div>
+          <div class="spec-block">
+            <h4>Características de la plataforma</h4>
+            <ul>
+              <li>Diferentes largos y anchos.</li>
+              <li>Sin o con bastidor tipo escalera en perfil tubular anclado a chasis por placa de apoyo en acero ASTM A36.</li>
+              <li>Teleras transversales tubulares o vigas doble T cada 500 mm; longitudinales cada 700 mm.</li>
+              <li>Cubreteleras en perfil tipo C de 5 mm en acero ASTM A36.</li>
+              <li>Piso diamantado plano o tipo omega en acero ASTM A36.</li>
+              <li>Frontales con perfil reforzado y forrado en placa lisa o malla desplegada, acero ASTM A36.</li>
+              <li>Barandas de 500 mm de alto con marco tubular y placa de 2 mm. Pasamano de tubo 2" de 600 mm con cierre clamp regulable y bisagras tipo tubo o G, removibles.</li>
+              <li>Puerta de acceso lateral simple o doble con escalera fija o plegable.</li>
+            </ul>
+          </div>
+          <div class="spec-block">
+            <h4>Accesorios</h4>
+            <ul>
+              <li>4 piñas para contenedor.</li>
+              <li>Parachoques trasero según norma.</li>
+              <li>Sistema eléctrico con focos laterales y frontales tipo LED.</li>
+              <li>1 caja de herramientas de 0,8 m en plástico reforzado.</li>
+              <li>Focos de trabajo LED en zona superior del frontal.</li>
+              <li>Tapabarros metálicos con guardabarros plásticos para ejes traseros.</li>
+              <li>Kit minero (baliza, pértiga, portaextintor sin extintor 10 kg, 4 cuñas poliuretano reforzado, check wheel).</li>
+              <li>Cintas reflectantes según norma, señalética de seguridad y apoyo ciclista según norma.</li>
+              <li>Limpieza mecánica con tratamiento fosfatizado, anticorrosivo epóxico y poliuretano de alta densidad.</li>
+            </ul>
+          </div>
+          <div class="spec-block">
+            <h4>Garantía</h4>
+            <p>Un año por defectos de fabricación, no así por mal uso.</p>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-2 mt-6 pt-5 border-t border-black/10">
+            <a href="/fichas/carroceria-servicio.pdf" download class="flex-1 text-center bg-black text-white px-5 py-3 text-[10px] font-bold uppercase tracking-wider hover:bg-black/80">📄 Descargar ficha</a>
+            <a href="cotizar.html" class="flex-1 text-center border border-black text-black px-5 py-3 text-[10px] font-bold uppercase tracking-wider hover:bg-black hover:text-white transition">Cotizar este equipo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 3: ESTANQUE SOBRE CAMIÓN (ECAXX) -->
+  <div id="modal-ecaxx" class="product-modal fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true" aria-labelledby="modal-ecaxx-title">
+    <div class="modal-backdrop absolute inset-0 bg-black/70" data-modal-close></div>
+    <div class="modal-content relative bg-white max-w-5xl mx-auto my-4 md:my-10 max-h-[95vh] md:max-h-[90vh] shadow-2xl overflow-hidden">
+      <div class="modal-topbar">
+        <button type="button" class="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider hover:opacity-70" data-modal-close>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+          Volver al catálogo
+        </button>
+        <span class="text-[10px] uppercase tracking-wider text-white/50 hidden sm:inline">Modelo ECAXX · OYet</span>
+        <button type="button" class="w-8 h-8 flex items-center justify-center hover:bg-white/10 transition" aria-label="Cerrar detalle" data-modal-close>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <figure class="modal-figure">
+          <img src="/assets/img/algibe-salmon.png" alt="Estanque sobre Camión" loading="lazy" decoding="async">
+        </figure>
+        <div class="modal-info">
+          <h3 id="modal-ecaxx-title" class="text-2xl md:text-3xl font-black text-black tracking-tight leading-tight mb-4">Estanque sobre Camión</h3>
+          <div class="spec-grid">
+            <div><div class="label">Marca</div><div class="value">OYet</div></div>
+            <div><div class="label">Modelo</div><div class="value">ECAXX</div></div>
+            <div><div class="label">Capacidad</div><div class="value">10–45 m³</div></div>
+            <div><div class="label">Tara</div><div class="value">2.500–8.800 kg</div></div>
+          </div>
+          <div class="spec-block">
+            <h4>Descripción general</h4>
+            <p>Estanque sobre camión de diferentes capacidades para agua industrial o potable.</p>
+          </div>
+          <div class="spec-block">
+            <h4>Características del estanque</h4>
+            <ul>
+              <li>Capacidad de 10 a 45 m³ en uno o más compartimentos.</li>
+              <li>Sección semi elíptica especial o tipo pantalla de televisión.</li>
+              <li>Manto en acero ASTM A36, STRENX 700, HIACE o inoxidable AISI 304L.</li>
+              <li>Cabezales rodonados en acero ASTM A36, STRENX 700, HIACE o AISI 304L.</li>
+              <li>Rompeolas transversales o longitudinales rodonados con pasa-hombre de 500 mm y aberturas superior/inferior.</li>
+              <li>Escotilla de carga trasera en acero estructural con tapa de 500 mm.</li>
+              <li>Vigas principales en perfil sobre chasis con placas apernadas y resortes en zona delantera.</li>
+            </ul>
+          </div>
+          <div class="spec-block">
+            <h4>Sistema de carga y descarga</h4>
+            <ul>
+              <li>Sistema presurizado con bomba centrífuga de 800 a 1.200 L/min en acero inoxidable, 50–60 mca (87 psi), accionada con motor hidráulico.</li>
+              <li>Bomba hidráulica de engranaje conectada directamente a PTO.</li>
+              <li>Red en cañerías galvanizadas de 3" con conexión tipo victaulic.</li>
+              <li>2 aspersores traseros y 2 delanteros, cada uno cubriendo 5 m de ancho x 6 m de largo, comandados desde cabina.</li>
+              <li>Salida trasera lateral de 2" con llave de bola, auxiliar de incendio presurizado.</li>
+              <li>Barra de riego con batería de 10 aspersores con accionamiento neumático desde cabina.</li>
+              <li>Estanque para aceite de 200 L montado costado chasis.</li>
+            </ul>
+          </div>
+          <div class="spec-block">
+            <h4>Accesorios</h4>
+            <ul>
+              <li>Escalera de acceso lateral posterior tipo frontal con plataforma plana o tipo MEL.</li>
+              <li>Tapabarros con guardafangos institucionales y parachoques según norma.</li>
+              <li>Sistema eléctrico reglamentario completo con foco LED sellado.</li>
+              <li>Huinchas reflectivas, porta extintor metálico, caja de herramientas.</li>
+              <li>Kit minero (baliza, pértiga, cuñas, check wheel, láminas para vidrios, etc.).</li>
+            </ul>
+          </div>
+          <div class="spec-block">
+            <h4>Garantía</h4>
+            <p>Un año por defectos de fabricación, no así por mal uso.</p>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-2 mt-6 pt-5 border-t border-black/10">
+            <a href="/fichas/estanque-sobre-camion.pdf" download class="flex-1 text-center bg-black text-white px-5 py-3 text-[10px] font-bold uppercase tracking-wider hover:bg-black/80">📄 Descargar ficha</a>
+            <a href="cotizar.html" class="flex-1 text-center border border-black text-black px-5 py-3 text-[10px] font-bold uppercase tracking-wider hover:bg-black hover:text-white transition">Cotizar este equipo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 4: SEMIRREMOLQUE PLANO O REBAJADO (SPXXX) -->
+  <div id="modal-spxxx" class="product-modal fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true" aria-labelledby="modal-spxxx-title">
+    <div class="modal-backdrop absolute inset-0 bg-black/70" data-modal-close></div>
+    <div class="modal-content relative bg-white max-w-5xl mx-auto my-4 md:my-10 max-h-[95vh] md:max-h-[90vh] shadow-2xl overflow-hidden">
+      <div class="modal-topbar">
+        <button type="button" class="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider hover:opacity-70" data-modal-close>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+          Volver al catálogo
+        </button>
+        <span class="text-[10px] uppercase tracking-wider text-white/50 hidden sm:inline">Modelo SPXXX · OYet</span>
+        <button type="button" class="w-8 h-8 flex items-center justify-center hover:bg-white/10 transition" aria-label="Cerrar detalle" data-modal-close>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <figure class="modal-figure">
+          <img src="/assets/img/sistemas-hidraulicos.png" alt="Semirremolque Plano o Rebajado" loading="lazy" decoding="async">
+        </figure>
+        <div class="modal-info">
+          <h3 id="modal-spxxx-title" class="text-2xl md:text-3xl font-black text-black tracking-tight leading-tight mb-4">Semirremolque Plano o Rebajado</h3>
+          <div class="spec-grid">
+            <div><div class="label">Marca</div><div class="value">OYet</div></div>
+            <div><div class="label">Modelo</div><div class="value">SPXXX</div></div>
+            <div><div class="label">Capacidad</div><div class="value">25–40 t</div></div>
+            <div><div class="label">Tara</div><div class="value">6.000–7.500 kg</div></div>
+          </div>
+          <div class="spec-block">
+            <h4>Descripción general</h4>
+            <p>Semirremolque plano o rebajado de alto tonelaje.</p>
+          </div>
+          <div class="spec-block">
+            <h4>Características del chasis</h4>
+            <ul>
+              <li>Vigas doble T tipo soldado con soldadura MIG en atmósfera controlada, tipo escalera en acero ASTM A36 o STRENX 700.</li>
+              <li>Conexión de ambos chasis en viga doble T con refuerzos estructurales (para rebajado).</li>
+              <li>Plancha de apoyo perno rey en 8 mm de espesor; perno rey de 2" intercambiable.</li>
+              <li>Gatos de apoyo hidráulicos extensibles de 25 t por línea, total 50 t comandadas por botonera alámbrica extensible por lado.</li>
+            </ul>
+          </div>
+          <div class="spec-block">
+            <h4>Plataforma</h4>
+            <ul>
+              <li>Piso de acero diamantado ASTM A36.</li>
+              <li>Teleras transversales tubulares insertadas en vigas cada 500 mm (ASTM A36).</li>
+              <li>Teleras longitudinales cada 300 mm tubulares ASTM A36.</li>
+              <li>Cubreteleras reforzadas de 5 mm en ASTM A36.</li>
+              <li>Frontal de perfiles tubulares con placa lisa ASTM A36.</li>
+            </ul>
+          </div>
+          <div class="spec-block">
+            <h4>Suspensión y frenos</h4>
+            <ul>
+              <li>Suspensión neumática con eje integrado para 30.000 lb (13.600 kg) con válvula de nivel automática o mecánica.</li>
+              <li>Ejes doble rodado de 30.000 lb c/u, mazas disco europeo o americano, frenos 7", rodamientos gemelos lubricados en grasa, trocha extendida de 2,6 m.</li>
+              <li>Válvula de freno doble vía con sistema emergencia HALDEX o WABCO con EBS+ABS (suspensión neumática) y ABS (mecánica).</li>
+              <li>Triple estanque acumulador de aire y pulmones de doble cámara tipo maxi brake.</li>
+              <li>Llantas disco en acero o aluminio 6,25" x 17,5" o 8,25" x 22,5" (sin neumáticos).</li>
+            </ul>
+          </div>
+          <div class="spec-block">
+            <h4>Accesorios</h4>
+            <ul>
+              <li>Barandas metálicas con o sin pasamano, accionamiento manual o hidráulico con central autónoma y control remoto.</li>
+              <li>Puerta de acceso simple o doble.</li>
+              <li>Portarepuesto doble en costado chasis.</li>
+              <li>Parachoques trasero según norma, sistema eléctrico LED, tapabarros plástico reforzado.</li>
+              <li>Protección lateral o apoyo ciclista en aluminio, porta extintor en ambos lados, 4 cuñas de poliuretano con soportes.</li>
+              <li>Limpieza mediante granallado, anticorrosivo epóxico y doble mano de poliuretano; huinchas reflectivas según norma.</li>
+            </ul>
+          </div>
+          <div class="spec-block">
+            <h4>Garantía</h4>
+            <p>6 meses, solo por efectos técnicos, no así por mal uso o sobrecarga.</p>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-2 mt-6 pt-5 border-t border-black/10">
+            <a href="/fichas/semiremolque-plano-rebajado.pdf" download class="flex-1 text-center bg-black text-white px-5 py-3 text-[10px] font-bold uppercase tracking-wider hover:bg-black/80">📄 Descargar ficha</a>
+            <a href="cotizar.html" class="flex-1 text-center border border-black text-black px-5 py-3 text-[10px] font-bold uppercase tracking-wider hover:bg-black hover:text-white transition">Cotizar este equipo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 5: TOLVA SOBRE CAMIÓN (TCTXX) -->
+  <div id="modal-tctxx" class="product-modal fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true" aria-labelledby="modal-tctxx-title">
+    <div class="modal-backdrop absolute inset-0 bg-black/70" data-modal-close></div>
+    <div class="modal-content relative bg-white max-w-5xl mx-auto my-4 md:my-10 max-h-[95vh] md:max-h-[90vh] shadow-2xl overflow-hidden">
+      <div class="modal-topbar">
+        <button type="button" class="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider hover:opacity-70" data-modal-close>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+          Volver al catálogo
+        </button>
+        <span class="text-[10px] uppercase tracking-wider text-white/50 hidden sm:inline">Modelo TCTXX · OYet</span>
+        <button type="button" class="w-8 h-8 flex items-center justify-center hover:bg-white/10 transition" aria-label="Cerrar detalle" data-modal-close>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <figure class="modal-figure">
+          <img src="/assets/img/tolva-blanca.png" alt="Tolva sobre Camión" loading="lazy" decoding="async">
+        </figure>
+        <div class="modal-info">
+          <h3 id="modal-tctxx-title" class="text-2xl md:text-3xl font-black text-black tracking-tight leading-tight mb-4">Tolva sobre Camión</h3>
+          <div class="spec-grid">
+            <div><div class="label">Marca</div><div class="value">OYet</div></div>
+            <div><div class="label">Modelo</div><div class="value">TCTXX</div></div>
+            <div><div class="label">Capacidad</div><div class="value">4–25 m³</div></div>
+            <div><div class="label">Tara</div><div class="value">2.500–5.500 kg</div></div>
+          </div>
+          <div class="spec-block">
+            <h4>Descripción general</h4>
+            <p>Tolva sobre camión con cilindro telescópico frontal, instalada sobre chasis con bastidor.</p>
+          </div>
+          <div class="spec-block">
+            <h4>Características de la tolva</h4>
+            <ul>
+              <li>Capacidad de 4 a 25 m³.</li>
+              <li>Piso en acero ASTM A36, antiabrasivo 500 HB o inoxidable AISI 304L.</li>
+              <li>Lateral, frontal y puerta en acero ASTM A36, antiabrasivo 500 HB o AISI 304L.</li>
+              <li>Puerta con refuerzos perimetrales, bisagras superiores tipo minera con accionamiento por cadenas laterales o hidráulica con cilindros laterales.</li>
+              <li>Bastidor en perfil simple o tubular ASTM A36, montado sobre chasis con placas de anclaje y soporte flexible delantero.</li>
+              <li>Pasadores en acero SAE 1045; cubrecabina de 5 mm en ASTM A36; bisagra extendida para mayor estabilidad.</li>
+            </ul>
+          </div>
+          <div class="spec-block">
+            <h4>Sistema hidráulico</h4>
+            <ul>
+              <li>Cilindro telescópico frontal marca HYVA o ITH (última etapa cromada).</li>
+              <li>Bomba hidráulica de engranajes HYDROCAR o HYVA de 52 a 85 L/min a 1.000 rpm y presión máx. 250 bar, para trabajo pesado.</li>
+              <li>Instalación de mangueras de alta y baja presión con niples prensados.</li>
+              <li>Estanque hidráulico importado de 60 a 100 L con aceite AWS 46, tapa y marcador de nivel.</li>
+              <li>Sistema de comando instalado en cabina; válvula término de carrera; filtro en línea de retorno.</li>
+            </ul>
+          </div>
+          <div class="spec-block">
+            <h4>Características generales</h4>
+            <ul>
+              <li>Sistema eléctrico según reglamento con luces LED; parachoques según norma.</li>
+              <li>Portarepuesto tipo trinquete en frontal; escalera de acceso lateral trasera izquierda.</li>
+              <li>Portafoco para foco original camión; tratamiento mecánico y pintura anticorrosiva + epóxica en color a elección.</li>
+            </ul>
+          </div>
+          <div class="spec-block">
+            <h4>Garantía</h4>
+            <p>Un año por defectos de fabricación, no así por mal uso.</p>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-2 mt-6 pt-5 border-t border-black/10">
+            <a href="/fichas/tolva-sobre-camion.pdf" download class="flex-1 text-center bg-black text-white px-5 py-3 text-[10px] font-bold uppercase tracking-wider hover:bg-black/80">📄 Descargar ficha</a>
+            <a href="cotizar.html" class="flex-1 text-center border border-black text-black px-5 py-3 text-[10px] font-bold uppercase tracking-wider hover:bg-black hover:text-white transition">Cotizar este equipo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer class="bg-black text-white py-12 border-t border-white/10">
     <div class="container-custom">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-        <div><img src="/assets/img/Logo-oyet-01.png" alt="Oyet SpA" class="h-8 w-auto object-contain filter brightness-0 invert mb-4" loading="lazy"><p class="text-white/50 text-xs leading-relaxed">Empresa metalúrgica especializada en equipos para minería y transporte pesado desde 2015.</p></div>
-        <div><h4 class="text-xs font-bold uppercase tracking-wider mb-4">Secciones</h4><ul class="space-y-2 text-xs text-white/50"><li><a href="/" class="hover:text-white transition">Inicio</a></li><li><a href="empresa.html" class="hover:text-white transition">Empresa</a></li><li><a href="productos.html" class="hover:text-white transition">Productos</a></li><li><a href="contacto.html" class="hover:text-white transition">Contacto</a></li></ul></div>
-        <div><h4 class="text-xs font-bold uppercase tracking-wider mb-4">Servicios</h4><ul class="space-y-2 text-xs text-white/50"><li><a href="productos.html" class="hover:text-white transition">Carrocerías</a></li><li><a href="productos.html" class="hover:text-white transition">Estanques</a></li><li><a href="productos.html" class="hover:text-white transition">Tolvas</a></li><li><a href="servicios.html" class="hover:text-white transition">Sistemas Hidráulicos</a></li></ul></div>
-        <div><h4 class="text-xs font-bold uppercase tracking-wider mb-4">Legal</h4><ul class="space-y-2 text-xs text-white/50"><li><a href="cookies.html" class="hover:text-white transition">Política de Cookies</a></li><li><a href="privacidad.html" class="hover:text-white transition">Privacidad</a></li><li><a href="terminos.html" class="hover:text-white transition">Términos</a></li></ul></div>
+        <div>
+          <img src="/assets/img/Logo-oyet-01.png" alt="Oyet SpA" class="h-8 w-auto object-contain filter brightness-0 invert mb-4" width="120" height="32" loading="lazy">
+          <p class="text-white/50 text-xs leading-relaxed">Empresa metalúrgica especializada en equipos para minería y transporte pesado desde 2015.</p>
+        </div>
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider mb-4">Secciones</h4>
+          <ul class="space-y-2 text-xs text-white/50">
+            <li><a href="/" class="hover:text-white transition">Inicio</a></li>
+            <li><a href="empresa.html" class="hover:text-white transition">Empresa</a></li>
+            <li><a href="productos.html" class="hover:text-white transition">Productos</a></li>
+            <li><a href="contacto.html" class="hover:text-white transition">Contacto</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider mb-4">Servicios</h4>
+          <ul class="space-y-2 text-xs text-white/50">
+            <li><a href="productos.html" class="hover:text-white transition">Carrocerías</a></li>
+            <li><a href="productos.html" class="hover:text-white transition">Estanques</a></li>
+            <li><a href="productos.html" class="hover:text-white transition">Tolvas</a></li>
+            <li><a href="servicios.html" class="hover:text-white transition">Sistemas Hidráulicos</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider mb-4">Legal</h4>
+          <ul class="space-y-2 text-xs text-white/50">
+            <li><a href="cookies.html" class="hover:text-white transition">Política de Cookies</a></li>
+            <li><a href="privacidad.html" class="hover:text-white transition">Privacidad</a></li>
+            <li><a href="terminos.html" class="hover:text-white transition">Términos</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="pt-6 border-t border-white/10 text-center text-white/30 text-[10px]">Copyright © <span data-year>2026</span> Oyet SpA · Todos los derechos reservados.</div>
+
+      <div class="flex flex-col md:flex-row justify-between items-center pt-6 border-t border-white/10 gap-4">
+        <p class="text-white/30 text-[10px]">Copyright © <span data-year>2026</span> Oyet SpA · Todos los derechos reservados.</p>
+        <div class="flex items-center gap-4">
+          <a href="https://www.linkedin.com/company/oyet-spa" target="_blank" rel="noopener noreferrer" class="w-8 h-8 bg-white/10 hover:bg-red-600 text-white flex items-center justify-center transition-all duration-300 hover:scale-110" aria-label="LinkedIn de Oyet SpA">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/oyet.spa/" target="_blank" rel="noopener noreferrer" class="w-8 h-8 bg-white/10 hover:bg-red-600 text-white flex items-center justify-center transition-all duration-300 hover:scale-110" aria-label="Instagram de Oyet SpA">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6m5.4 3a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m5-2.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"/></svg>
+          </a>
+          <a href="https://wa.me/56992200717" target="_blank" rel="noopener noreferrer" class="w-8 h-8 bg-white/10 hover:bg-red-600 text-white flex items-center justify-center transition-all duration-300 hover:scale-110" aria-label="WhatsApp Oyet SpA">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm5.72 14.03c-.24.68-1.4 1.25-1.9 1.32-.43.06-.98.11-2.95-.67-2.52-1-4.15-3.57-4.28-3.74-.12-.17-1.02-1.36-1.02-2.59 0-1.23.64-1.83.87-2.08.24-.25.53-.31.71-.31.18 0 .35.01.5.02.16.01.37-.06.58.45.21.52.73 1.79.79 1.92.06.13.1.28.01.45-.09.18-.13.28-.27.45-.14.16-.29.36-.42.49-.14.14-.3.29-.13.58.17.29.75 1.24 1.6 2 1.1 1 2.03 1.31 2.32 1.45.29.14.46.12.63-.08.17-.2.73-.85.93-1.14.2-.29.39-.24.66-.14.27.1.1.2 1.37.84.27.13.44.2.51.32.06.12.06.69-.18 1.37z"/></svg>
+          </a>
+        </div>
+      </div>
     </div>
   </footer>
 
   <div id="cookie-banner" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
     <div class="container-custom flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-      <p class="text-xs md:text-sm leading-relaxed max-w-3xl">Utilizamos cookies propias y de terceros para mejorar tu experiencia, analizar el tráfico y personalizar contenido. Puedes aceptar todas, rechazar las no esenciales o consultar nuestra <a href="cookies.html">Política de Cookies</a>.</p>
+      <p class="text-xs md:text-sm leading-relaxed max-w-3xl">
+        Utilizamos cookies propias y de terceros para mejorar tu experiencia, analizar el tráfico y personalizar contenido. Puedes aceptar todas, rechazar las no esenciales o consultar nuestra <a href="cookies.html">Política de Cookies</a>.
+      </p>
       <div class="flex gap-2 flex-shrink-0">
         <button id="cookie-reject" type="button" class="border border-white/40 text-white px-4 py-2 text-[11px] font-bold uppercase tracking-wider hover:bg-white/10">Solo esenciales</button>
         <button id="cookie-accept" type="button" class="bg-white text-black px-4 py-2 text-[11px] font-bold uppercase tracking-wider hover:bg-white/90">Aceptar todas</button>
@@ -247,5 +823,216 @@
   <script src="/assets/js/forms.js" defer></script>
   <script src="/assets/js/main.js" defer></script>
   <script src="/assets/js/downloads.js" defer></script>
+
+  <script>
+  (function () {
+    'use strict';
+    var lastFocused;
+
+    function getFocusable(modal) {
+      return modal.querySelectorAll(
+        'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      );
+    }
+
+    function openModal(id) {
+      var modal = document.getElementById(id);
+      if (!modal || !modal.classList.contains('hidden')) return;
+
+      lastFocused = document.activeElement;
+      modal.classList.remove('hidden');
+      document.body.classList.add('modal-open');
+
+      var body = modal.querySelector('.modal-body');
+      if (body) body.scrollTop = 0;
+
+      var backBtn = modal.querySelector('.modal-topbar button');
+      if (backBtn) {
+        try { backBtn.focus({ preventScroll: true }); }
+        catch (e) { backBtn.focus(); }
+      }
+    }
+
+    function closeModal(modal) {
+      if (!modal || modal.classList.contains('hidden')) return;
+      modal.classList.add('hidden');
+      document.body.classList.remove('modal-open');
+      if (lastFocused && typeof lastFocused.focus === 'function') {
+        try { lastFocused.focus({ preventScroll: true }); }
+        catch (e) { lastFocused.focus(); }
+      }
+    }
+
+    function trapFocus(e) {
+      if (e.key !== 'Tab') return;
+      var modal = document.querySelector('.product-modal:not(.hidden)');
+      if (!modal) return;
+      var focusables = getFocusable(modal);
+      if (!focusables.length) return;
+      var first = focusables[0];
+      var last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('[data-modal-open]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          openModal(btn.getAttribute('data-modal-open'));
+        });
+      });
+
+      document.querySelectorAll('[data-modal-close]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          closeModal(btn.closest('.product-modal'));
+        });
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          var open = document.querySelector('.product-modal:not(.hidden)');
+          if (open) closeModal(open);
+        }
+        trapFocus(e);
+      });
+    });
+  })();
+  </script>
+
+  <script>
+  (function () {
+    'use strict';
+
+    var MIN_SCALE = 1;
+    var MAX_SCALE = 4;
+
+    function setupDraggable(figure) {
+      var img = figure.querySelector('img');
+      if (!img) return;
+
+      var state = {
+        x: 0, y: 0,
+        scale: 1,
+        dragging: false,
+        startX: 0, startY: 0,
+        startTx: 0, startTy: 0
+      };
+
+      function applyTransform() {
+        img.style.transform =
+          'translate(calc(-50% + ' + state.x + 'px), calc(-50% + ' + state.y + 'px)) ' +
+          'scale(' + state.scale + ')';
+      }
+
+      function fitToContainer() {
+        if (!img.naturalWidth || !img.naturalHeight) return;
+        var fw = figure.clientWidth;
+        var fh = figure.clientHeight;
+        if (!fw || !fh) return;
+        var cover = Math.max(fw / img.naturalWidth, fh / img.naturalHeight);
+        img.style.width = (img.naturalWidth * cover) + 'px';
+        img.style.height = (img.naturalHeight * cover) + 'px';
+        state.x = 0;
+        state.y = 0;
+        state.scale = 1;
+        applyTransform();
+      }
+
+      if (img.complete) {
+        fitToContainer();
+      } else {
+        img.addEventListener('load', fitToContainer);
+      }
+
+      if (typeof ResizeObserver !== 'undefined') {
+        new ResizeObserver(function () { fitToContainer(); }).observe(figure);
+      }
+
+      figure.addEventListener('mousedown', function (e) {
+        e.preventDefault();
+        state.dragging = true;
+        figure.classList.add('dragging');
+        state.startX = e.clientX;
+        state.startY = e.clientY;
+        state.startTx = state.x;
+        state.startTy = state.y;
+      });
+
+      document.addEventListener('mousemove', function (e) {
+        if (!state.dragging) return;
+        state.x = state.startTx + (e.clientX - state.startX);
+        state.y = state.startTy + (e.clientY - state.startY);
+        applyTransform();
+      });
+
+      document.addEventListener('mouseup', function () {
+        if (!state.dragging) return;
+        state.dragging = false;
+        figure.classList.remove('dragging');
+      });
+
+      figure.addEventListener('touchstart', function (e) {
+        if (e.touches.length !== 1) return;
+        var t = e.touches[0];
+        state.dragging = true;
+        state.startX = t.clientX;
+        state.startY = t.clientY;
+        state.startTx = state.x;
+        state.startTy = state.y;
+      }, { passive: true });
+
+      figure.addEventListener('touchmove', function (e) {
+        if (!state.dragging || e.touches.length !== 1) return;
+        var t = e.touches[0];
+        state.x = state.startTx + (t.clientX - state.startX);
+        state.y = state.startTy + (t.clientY - state.startY);
+        applyTransform();
+        e.preventDefault();
+      }, { passive: false });
+
+      figure.addEventListener('touchend', function () {
+        state.dragging = false;
+      });
+
+      figure.addEventListener('wheel', function (e) {
+        e.preventDefault();
+        var delta = -e.deltaY * 0.0015;
+        var newScale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, state.scale + delta));
+        if (newScale === state.scale) return;
+        state.scale = newScale;
+        applyTransform();
+      }, { passive: false });
+
+      figure.addEventListener('dblclick', function () {
+        state.x = 0;
+        state.y = 0;
+        state.scale = 1;
+        applyTransform();
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.product-modal .modal-figure').forEach(setupDraggable);
+
+      document.querySelectorAll('[data-modal-open]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var modal = document.getElementById(btn.getAttribute('data-modal-open'));
+          if (!modal) return;
+          var figure = modal.querySelector('.modal-figure');
+          if (!figure) return;
+          var img = figure.querySelector('img');
+          if (!img) return;
+          var fw = figure.clientWidth;
+          var fh = figure.clientHeight;
+          if (!fw || !fh) return;
+          var cover = Math.max(fw / img.naturalWidth, fh / img.naturalHeight);
+          img.style.width = (img.naturalWidth * cover) + 'px';
+          img.style.height = (img.naturalHeight * cover) + 'px';
+          img.style.transform = 'translate(-50%, -50%) scale(1)';
+        });
+      });
+    });
+  })();
+  </script>
 </body>
 </html>
