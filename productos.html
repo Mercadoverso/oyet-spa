@@ -37,161 +37,184 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
   <style>
-    .product-modal {
-      position: fixed;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-    }
-    .product-modal.hidden { display: none; }
+  .product-modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    z-index: 100;
+  }
+  .product-modal.hidden { display: none; }
 
-    .product-modal .modal-content {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      max-width: 64rem;
-      height: 90vh;
-      max-height: 90vh;
-      background: #fff;
-      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
-      overflow: hidden;
-    }
+  .product-modal .modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+  }
 
-    .product-modal .modal-backdrop {
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.7);
-    }
+  .product-modal .modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 64rem;
+    height: 90vh;
+    max-height: 90vh;
+    background: #fff;
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+    overflow: hidden;
+  }
 
+  .product-modal .modal-topbar {
+    flex: 0 0 auto;
+    background: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+  }
+
+  @media (max-width: 767px) {
     .product-modal .modal-topbar {
-      flex: 0 0 auto;
-      background: #000;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.5rem;
-      padding: 0.75rem 1rem;
-      border-bottom: 1px solid rgba(255,255,255,0.15);
+      padding: 0.85rem 1rem;
     }
+  }
 
-    .product-modal .modal-body {
-      flex: 1 1 auto;
-      display: grid;
-      grid-template-columns: 1fr;
-      overflow-y: auto;
-      overflow-x: hidden;
-      -webkit-overflow-scrolling: touch;
-      min-height: 0;
-    }
-    @media (min-width: 768px) {
-      .product-modal .modal-body { grid-template-columns: 1.05fr 1fr; }
-    }
+  .product-modal .modal-body {
+    flex: 1 1 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    min-height: 0;
+  }
+  @media (min-width: 768px) {
+    .product-modal .modal-body { grid-template-columns: 1.05fr 1fr; }
+  }
 
+  .product-modal .modal-figure {
+    background: #f5f5f5;
+    overflow: hidden;
+    margin: 0;
+    position: relative;
+    height: 14rem;
+    width: 100%;
+    cursor: grab;
+    user-select: none;
+    touch-action: none;
+  }
+  .product-modal .modal-figure.dragging { cursor: grabbing; }
+  @media (min-width: 768px) {
     .product-modal .modal-figure {
-      background: #f5f5f5;
-      overflow: hidden;
-      margin: 0;
-      position: relative;
-      max-height: 15rem;
-      cursor: grab;
-      user-select: none;
-      touch-action: none;
+      height: 100%;
+      min-height: 100%;
     }
-    .product-modal .modal-figure.dragging { cursor: grabbing; }
-    @media (min-width: 768px) {
-      .product-modal .modal-figure {
-        max-height: none;
-        height: 100%;
-        min-height: 100%;
-      }
-    }
-    .product-modal .modal-figure img {
-      display: block;
-      max-width: none;
-      max-height: none;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      user-select: none;
-      -webkit-user-drag: none;
-      pointer-events: none;
-    }
+  }
+  .product-modal .modal-figure img {
+    display: block;
+    max-width: none;
+    max-height: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: none;
+  }
 
-    .product-modal .modal-info { padding: 1.5rem; }
-    @media (min-width: 768px) {
-      .product-modal .modal-info { padding: 2rem 2.5rem; }
-    }
+  .product-modal .modal-info { padding: 1.5rem; }
+  @media (min-width: 768px) {
+    .product-modal .modal-info { padding: 2rem 2.5rem; }
+  }
 
-    .product-modal .spec-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.75rem 1rem;
-      padding: 1rem 0;
-      border-top: 1px solid rgba(0,0,0,0.1);
-      border-bottom: 1px solid rgba(0,0,0,0.1);
-      margin-bottom: 1.25rem;
-    }
-    @media (min-width: 640px) {
-      .product-modal .spec-grid { grid-template-columns: repeat(4, 1fr); }
-    }
-    .product-modal .spec-grid .label {
-      font-size: 0.6rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: rgba(0,0,0,0.5);
-      margin-bottom: 0.15rem;
-    }
-    .product-modal .spec-grid .value {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: #000;
-    }
+  .product-modal .spec-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem 1rem;
+    padding: 1rem 0;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    margin-bottom: 1.25rem;
+  }
+  @media (min-width: 640px) {
+    .product-modal .spec-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+  .product-modal .spec-grid .label {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(0,0,0,0.5);
+    margin-bottom: 0.15rem;
+  }
+  .product-modal .spec-grid .value {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #000;
+  }
 
-    .product-modal .spec-block + .spec-block {
-      margin-top: 1.25rem;
-      padding-top: 1.25rem;
-      border-top: 1px solid rgba(0,0,0,0.08);
-    }
-    .product-modal .spec-block h4 {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #000;
-      margin-bottom: 0.5rem;
-    }
-    .product-modal .spec-block p {
-      font-size: 0.85rem;
-      color: rgba(0,0,0,0.65);
-      line-height: 1.55;
-      margin: 0;
-    }
-    .product-modal .spec-block ul {
-      list-style: disc;
-      padding-left: 1.1rem;
-      font-size: 0.85rem;
-      color: rgba(0,0,0,0.65);
-      line-height: 1.55;
-      margin: 0;
-    }
-    .product-modal .spec-block li + li { margin-top: 0.25rem; }
+  .product-modal .spec-block + .spec-block {
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(0,0,0,0.08);
+  }
+  .product-modal .spec-block h4 {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #000;
+    margin-bottom: 0.5rem;
+  }
+  .product-modal .spec-block p {
+    font-size: 0.85rem;
+    color: rgba(0,0,0,0.65);
+    line-height: 1.55;
+    margin: 0;
+  }
+  .product-modal .spec-block ul {
+    list-style: disc;
+    padding-left: 1.1rem;
+    font-size: 0.85rem;
+    color: rgba(0,0,0,0.65);
+    line-height: 1.55;
+    margin: 0;
+  }
+  .product-modal .spec-block li + li { margin-top: 0.25rem; }
 
-    body.modal-open { overflow: hidden; }
+  /* Bloquear scroll de fondo y ocultar el resto del sitio */
+  body.modal-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
 
-    .product-modal .modal-body::-webkit-scrollbar { width: 8px; }
-    .product-modal .modal-body::-webkit-scrollbar-track { background: #f0f0f0; }
-    .product-modal .modal-body::-webkit-scrollbar-thumb { background: #c0c0c0; }
-    .product-modal .modal-body::-webkit-scrollbar-thumb:hover { background: #909090; }
+  body.modal-open main,
+  body.modal-open header,
+  body.modal-open footer {
+    visibility: hidden;
+  }
 
-    @media print {
-      .product-modal .modal-topbar { display: none !important; }
-    }
-  </style>
+  body.modal-open .product-modal {
+    visibility: visible;
+  }
+
+  .product-modal .modal-body::-webkit-scrollbar { width: 8px; }
+  .product-modal .modal-body::-webkit-scrollbar-track { background: #f0f0f0; }
+  .product-modal .modal-body::-webkit-scrollbar-thumb { background: #c0c0c0; }
+  .product-modal .modal-body::-webkit-scrollbar-thumb:hover { background: #909090; }
+
+  @media print {
+    .product-modal .modal-topbar { display: none !important; }
+  }
+</style>
+
 </head>
 <body class="bg-white text-black antialiased">
 
