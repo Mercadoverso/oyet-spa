@@ -22,8 +22,8 @@
     }
 
     function updateButtons(active) {
-      if (btn) btn.textContent = active ? '🌓 Normal' : '🌓 Contraste';
-      if (btnMobile) btnMobile.innerHTML = active ? '🌓 Modo Normal' : '🌓 Modo Contraste';
+      if (btn) btn.textContent = active ? ' Normal' : ' Contraste';
+      if (btnMobile) btnMobile.innerHTML = active ? ' Modo Normal' : ' Modo Contraste';
     }
 
     function toggle() {
