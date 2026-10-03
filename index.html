@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <!-- Seguridad -->
   <meta http-equiv="Content-Security-Policy"
         content="default-src 'self';
                  script-src 'self' 'unsafe-inline' https://unpkg.com https://cdn.jsdelivr.net;
@@ -20,7 +19,6 @@
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
 
-  <!-- SEO -->
   <title>Oyet SpA | Equipos Mineros y Transporte Pesado en Chile</title>
   <meta name="description" content="Oyet SpA: fabricación de carrocerías, tolvas, estanques aljibes y equipos mineros en Lampa, Chile. Aceros certificados y estándar industrial.">
   <meta name="keywords" content="ingeniería minera, transporte pesado, carrocerías mineras, tolvas, estanques aljibes, Lampa, Chile, maestranza">
@@ -28,7 +26,6 @@
   <meta name="theme-color" content="#000000">
   <link rel="canonical" href="https://oyet.cl/">
 
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_CL">
   <meta property="og:site_name" content="Oyet SpA">
@@ -37,35 +34,28 @@
   <meta property="og:url" content="https://oyet.cl/">
   <meta property="og:image" content="https://oyet.cl/assets/img/og-image.jpg">
 
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Oyet SpA | Equipos Mineros">
   <meta name="twitter:description" content="Fabricación de equipos para minería y transporte pesado en Chile.">
   <meta name="twitter:image" content="https://oyet.cl/assets/img/og-image.jpg">
 
-  <!-- Favicon & manifest -->
   <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
   <link rel="apple-touch-icon" href="/assets/img/Logo-oyet-01.png">
   <link rel="manifest" href="/site.webmanifest">
 
-  <!-- Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
 
-  <!-- Fuentes -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-  <!-- CSS (Tailwind compilado localmente + main.css propio) -->
   <link rel="stylesheet" href="/assets/css/tailwind-compiled.css">
   <link rel="stylesheet" href="/assets/css/main.css">
   <link rel="stylesheet" href="/assets/css/print.css" media="print">
 
-  <!-- CDN con SRI -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
-  <!-- Schema.org JSON-LD -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -100,10 +90,10 @@
 
   <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
-  <!-- HEADER -->
+  <!-- HEADER — con px-2 extra a cada lado para dar aire al logo -->
   <header class="fixed w-full z-50 bg-white border-b border-black/10">
-    <div class="container-custom py-4 flex justify-between items-center">
-      <a href="/" class="flex-shrink-0" aria-label="Oyet SpA — Inicio">
+    <div class="container-custom py-4 flex justify-between items-center px-4 md:px-6">
+      <a href="/" class="flex-shrink-0 ml-1 md:ml-2" aria-label="Oyet SpA — Inicio">
         <img src="/assets/img/Logo-oyet-01.png" alt="Oyet SpA" class="h-8 md:h-10 w-auto object-contain" width="160" height="40">
       </a>
 
@@ -168,7 +158,7 @@
         </div>
       </div>
 
-<div class="relative z-20 container-custom h-full flex items-center" style="position:relative;z-index:20;">
+      <div class="relative z-20 container-custom h-full flex items-center" style="position:relative;z-index:20;">
         <div class="max-w-2xl">
           <span class="text-white/70 text-[10px] font-bold uppercase tracking-wider">Oyet · Desde 2015</span>
           <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-white uppercase leading-tight tracking-tight mt-4 mb-6">Equipos y Accesorios<br>para Transporte<br>de Carga Pesada.</h1>
@@ -201,29 +191,84 @@
           <h2 id="productos-title" class="text-3xl md:text-4xl font-black text-black mt-2 tracking-tight">Equipos fabricados para sus necesidades</h2>
           <p class="text-black/60 text-sm mt-4">Aceros certificados y componentes hidráulicos de calidad.</p>
         </div>
-        <div class="grid md:grid-cols-3 gap-8">
-          <a href="/productos-detalle/remolques.html" class="border border-black/10 p-6 hover:shadow-lg transition-all block" data-aos="fade-up" data-aos-delay="100">
-            <div class="h-48 bg-black/5 mb-6 overflow-hidden">
-              <img src="/assets/img/algibe-salmon.png" alt="Remolques industriales" class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+
+          <!-- 1. Carrocería Minera para Lubricación -->
+          <article class="border border-black/10 hover:shadow-lg transition-all flex flex-col h-full" data-aos="fade-up" data-aos-delay="100">
+            <a href="productos.html#modal-cmlxx" class="block h-48 bg-black/5 overflow-hidden flex-shrink-0">
+              <img src="/assets/img/algibe-amarillo.png" alt="Carrocería Minera para Lubricación" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" width="400" height="300">
+            </a>
+            <div class="p-6 flex flex-col flex-1">
+              <span class="text-black/40 text-[10px] font-bold uppercase tracking-wider">Modelo CMLXX</span>
+              <h3 class="text-xl font-bold text-black mt-2 mb-3">Carrocería Minera para Lubricación</h3>
+              <p class="text-black/60 text-sm mb-6">Unidad especializada para transporte y distribución de lubricantes en faena minera.</p>
+              <a href="productos.html#modal-cmlxx" class="mt-auto inline-block text-black text-[11px] font-bold uppercase tracking-wider border-b border-black pb-0.5 hover:opacity-60 self-start">Ver producto →</a>
             </div>
-            <h3 class="text-xl font-bold text-black mb-2">Remolques</h3>
-            <p class="text-black/60 text-sm mb-4">30.000 L, rompeolas internos, sistema de riego integrado.</p>
-          </a>
-          <a href="/productos-detalle/semirremolques.html" class="border border-black/10 p-6 hover:shadow-lg transition-all block" data-aos="fade-up">
-            <div class="h-48 bg-black/5 mb-6 overflow-hidden">
-              <img src="/assets/img/carroceria-amarilla.png" alt="Semirremolques de gran tonelaje" class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
+          </article>
+
+          <!-- 2. Carrocería para Servicio -->
+          <article class="border border-black/10 hover:shadow-lg transition-all flex flex-col h-full" data-aos="fade-up" data-aos-delay="150">
+            <a href="productos.html#modal-cmbxx" class="block h-48 bg-black/5 overflow-hidden flex-shrink-0">
+              <img src="/assets/img/carroceria-amarilla.png" alt="Carrocería para Servicio" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" width="400" height="300">
+            </a>
+            <div class="p-6 flex flex-col flex-1">
+              <span class="text-black/40 text-[10px] font-bold uppercase tracking-wider">Modelo CMBXX</span>
+              <h3 class="text-xl font-bold text-black mt-2 mb-3">Carrocería para Servicio</h3>
+              <p class="text-black/60 text-sm mb-6">Carrocería plana con barandas abatibles. Capacidad de 6 a 20 toneladas.</p>
+              <a href="productos.html#modal-cmbxx" class="mt-auto inline-block text-black text-[11px] font-bold uppercase tracking-wider border-b border-black pb-0.5 hover:opacity-60 self-start">Ver producto →</a>
             </div>
-            <h3 class="text-xl font-bold text-black mb-2">Semirremolques</h3>
-            <p class="text-black/60 text-sm mb-4">Para gran tonelaje, contrapesos o bobinas. Acero estructural.</p>
-          </a>
-          <a href="/productos-detalle/equipos-especiales.html" class="border border-black/10 p-6 hover:shadow-lg transition-all block" data-aos="fade-up" data-aos-delay="200">
-            <div class="h-48 bg-black/5 mb-6 overflow-hidden">
-              <img src="/assets/img/tolva-blanca.png" alt="Equipos especiales y tolvas" class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
+          </article>
+
+          <!-- 3. Estanque sobre Camión -->
+          <article class="border border-black/10 hover:shadow-lg transition-all flex flex-col h-full" data-aos="fade-up" data-aos-delay="200">
+            <a href="productos.html#modal-ecaxx" class="block h-48 bg-black/5 overflow-hidden flex-shrink-0">
+              <img src="/assets/img/algibe-salmon.png" alt="Estanque sobre Camión" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" width="400" height="300">
+            </a>
+            <div class="p-6 flex flex-col flex-1">
+              <span class="text-black/40 text-[10px] font-bold uppercase tracking-wider">Modelo ECAXX</span>
+              <h3 class="text-xl font-bold text-black mt-2 mb-3">Estanque sobre Camión</h3>
+              <p class="text-black/60 text-sm mb-6">Estanque aljibe para agua industrial o potable con bomba centrífuga. 10 a 45 m³.</p>
+              <a href="productos.html#modal-ecaxx" class="mt-auto inline-block text-black text-[11px] font-bold uppercase tracking-wider border-b border-black pb-0.5 hover:opacity-60 self-start">Ver producto →</a>
             </div>
-            <h3 class="text-xl font-bold text-black mb-2">Equipos Especiales</h3>
-            <p class="text-black/60 text-sm mb-4">Acero Hardox, cilindros hidráulicos de alta presión.</p>
-          </a>
+          </article>
+
+          <!-- 4. Semirremolque Plano o Rebajado -->
+          <article class="border border-black/10 hover:shadow-lg transition-all flex flex-col h-full" data-aos="fade-up" data-aos-delay="250">
+            <a href="productos.html#modal-spxxx" class="block h-48 bg-black/5 overflow-hidden flex-shrink-0">
+              <img src="/assets/img/sistemas-hidraulicos.png" alt="Semirremolque Plano o Rebajado" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" width="400" height="300">
+            </a>
+            <div class="p-6 flex flex-col flex-1">
+              <span class="text-black/40 text-[10px] font-bold uppercase tracking-wider">Modelo SPXXX</span>
+              <h3 class="text-xl font-bold text-black mt-2 mb-3">Semirremolque Plano o Rebajado</h3>
+              <p class="text-black/60 text-sm mb-6">Alto tonelaje, suspensión neumática o mecánica, frenos ABS/EBS. 25 a 40 t.</p>
+              <a href="productos.html#modal-spxxx" class="mt-auto inline-block text-black text-[11px] font-bold uppercase tracking-wider border-b border-black pb-0.5 hover:opacity-60 self-start">Ver producto →</a>
+            </div>
+          </article>
+
+          <!-- 5. Tolva sobre Camión -->
+          <article class="border border-black/10 hover:shadow-lg transition-all flex flex-col h-full" data-aos="fade-up" data-aos-delay="300">
+            <a href="productos.html#modal-tctxx" class="block h-48 bg-black/5 overflow-hidden flex-shrink-0">
+              <img src="/assets/img/tolva-blanca.png" alt="Tolva sobre Camión" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" width="400" height="300">
+            </a>
+            <div class="p-6 flex flex-col flex-1">
+              <span class="text-black/40 text-[10px] font-bold uppercase tracking-wider">Modelo TCTXX</span>
+              <h3 class="text-xl font-bold text-black mt-2 mb-3">Tolva sobre Camión</h3>
+              <p class="text-black/60 text-sm mb-6">Cilindro telescópico frontal, acero ASTM A36, antiabrasivo 500 HB o AISI 304L.</p>
+              <a href="productos.html#modal-tctxx" class="mt-auto inline-block text-black text-[11px] font-bold uppercase tracking-wider border-b border-black pb-0.5 hover:opacity-60 self-start">Ver producto →</a>
+            </div>
+          </article>
+
+          <!-- 6. Fabricación a Medida (CTA) -->
+          <article class="border-2 border-dashed border-black/20 p-8 flex flex-col items-center justify-center text-center bg-black/5 hover:bg-black/10 transition-all h-full" data-aos="fade-up" data-aos-delay="350">
+            <div class="text-4xl mb-4">🛠️</div>
+            <h3 class="text-xl font-bold text-black mb-3">¿Necesitas algo especial?</h3>
+            <p class="text-black/60 text-sm mb-6 max-w-xs">Diseñamos y fabricamos equipos a medida según los requerimientos de tu operación.</p>
+            <a href="cotizar.html" class="bg-black text-white px-6 py-3 text-xs font-bold uppercase tracking-wider hover:bg-black/80 mt-auto">Solicitar diseño →</a>
+          </article>
+
         </div>
+
         <div class="text-center mt-12">
           <a href="productos.html" class="inline-block bg-black text-white px-8 py-3 text-xs font-bold uppercase tracking-wider hover:bg-black/80">Ver todos los productos →</a>
         </div>
@@ -316,7 +361,6 @@
                 <option value="hidraulico">Sistema Hidráulico</option>
               </select>
               <textarea name="detalles" rows="3" placeholder="Detalles del Proyecto (capacidades, toneladas...)" class="w-full border border-black/20 p-3 text-sm focus:outline-none focus:border-black"></textarea>
-              <!-- Honeypot antispam -->
               <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
               <button type="submit" class="w-full bg-black text-white py-3 text-xs font-bold uppercase tracking-wider hover:bg-black/80">Enviar consulta</button>
               <p class="text-[10px] text-black/50 leading-relaxed">Al enviar aceptas nuestra <a href="privacidad.html" class="underline">Política de Privacidad</a>.</p>
@@ -421,7 +465,6 @@
     </div>
   </footer>
 
-  <!-- COOKIE BANNER -->
   <div id="cookie-banner" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
     <div class="container-custom flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
       <p class="text-xs md:text-sm leading-relaxed max-w-3xl">
@@ -434,7 +477,6 @@
     </div>
   </div>
 
-  <!-- SCRIPTS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
   <script src="/assets/js/menu.js" defer></script>

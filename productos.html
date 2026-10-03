@@ -1034,5 +1034,47 @@
     });
   })();
   </script>
+  <script>
+(function () {
+  'use strict';
+
+  // Detectar hash al cargar la página y abrir el modal correspondiente
+  function openFromHash() {
+    var hash = window.location.hash.replace('#', '');
+    if (!hash) return;
+
+    var modal = document.getElementById(hash);
+    if (!modal || !modal.classList.contains('product-modal')) return;
+
+    // Simular click en "Ver detalle" para que se ejecute toda la lógica
+    modal.classList.remove('hidden');
+    document.body.classList.add('modal-open');
+
+    var body = modal.querySelector('.modal-body');
+    if (body) body.scrollTop = 0;
+
+    var backBtn = modal.querySelector('.modal-topbar button');
+    if (backBtn) {
+      try { backBtn.focus({ preventScroll: true }); }
+      catch (e) { backBtn.focus(); }
+    }
+  }
+
+  // Ejecutar al cargar
+  document.addEventListener('DOMContentLoaded', openFromHash);
+
+  // Ejecutar si el usuario navega con anchors después de cargar
+  window.addEventListener('hashchange', openFromHash);
+
+  // Limpiar el hash al cerrar el modal (para que no quede en la URL)
+  document.addEventListener('click', function (e) {
+    if (e.target.matches('[data-modal-close]') || e.target.closest('[data-modal-close]')) {
+      if (window.location.hash) {
+        history.replaceState(null, '', window.location.pathname);
+      }
+    }
+  });
+})();
+</script>
 </body>
 </html>
