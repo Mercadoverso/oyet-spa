@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es-CL" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
@@ -67,13 +67,23 @@
 
   <main id="main-content">
     <!-- HERO INTERNO -->
-    <section class="pt-40 pb-20 bg-black text-white">
-      <div class="container-custom" data-aos="fade-up">
-        <span class="text-white/50 text-[10px] font-bold uppercase tracking-wider">Sobre nosotros</span>
-        <h1 class="text-4xl sm:text-5xl md:text-6xl font-black uppercase leading-tight tracking-tight mt-4">Empresa</h1>
-        <p class="text-white/70 text-sm md:text-base mt-6 max-w-2xl leading-relaxed">Más de una década fabricando equipos de alta ingeniería para minería y transporte pesado en Chile.</p>
-      </div>
-    </section>
+<section class="relative pt-40 pb-20 text-white overflow-hidden w-screen left-0 bg-black" style="background-color:#000;">
+  <!-- Imagen de fondo -->
+  <div class="absolute inset-0 bg-cover bg-center"
+       style="background-image:url('/assets/img/algibe-amarillo.png'); z-index:0;"
+       role="img" aria-label="Instalaciones Oyet"></div>
+
+  <!-- Filtro oscuro 80% -->
+  <div class="absolute inset-0"
+       style="background-color:rgba(0,0,0,0.8); z-index:1;"></div>
+
+  <!-- Contenido -->
+  <div class="relative w-full max-w-screen-2xl mx-auto px-6 md:px-10 lg:px-14" style="z-index:10;" data-aos="fade-up">
+    <span class="text-white/50 text-[10px] font-bold uppercase tracking-wider">Sobre nosotros</span>
+    <h1 class="text-4xl sm:text-5xl md:text-6xl font-black uppercase leading-tight tracking-tight mt-4">Empresa</h1>
+    <p class="text-white/70 text-sm md:text-base mt-6 max-w-2xl leading-relaxed">Más de una década fabricando equipos de alta ingeniería para minería y transporte pesado en Chile.</p>
+  </div>
+</section>
 
     <!-- HISTORIA -->
     <section class="py-20 bg-white">
@@ -103,17 +113,27 @@
         </div>
         <div class="grid md:grid-cols-3 gap-8">
           <div class="border border-black/10 p-8" data-aos="fade-up">
-            <div class="text-3xl mb-4">🎯</div>
+<svg class="w-7 h-7 mb-4 text-black inline-block" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true">
+  <circle cx="12" cy="12" r="10"/>
+  <circle cx="12" cy="12" r="6"/>
+  <circle cx="12" cy="12" r="2"/>
+</svg>
             <h3 class="text-xl font-bold text-black mb-3">Misión</h3>
             <p class="text-black/60 text-sm leading-relaxed">Diseñar y fabricar equipos de alta ingeniería que optimicen la operación de transporte pesado y minería, cumpliendo los más altos estándares de calidad, seguridad y durabilidad.</p>
           </div>
           <div class="border border-black/10 p-8" data-aos="fade-up" data-aos-delay="100">
-            <div class="text-3xl mb-4">🔭</div>
+<svg class="w-6 h-6 mb-4 text-black inline-block" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true">
+  <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/>
+  <circle cx="12" cy="12" r="3"/>
+</svg>
             <h3 class="text-xl font-bold text-black mb-3">Visión</h3>
             <p class="text-black/60 text-sm leading-relaxed">Ser el referente nacional en soluciones metalmecánicas para el sector minero-industrial, reconocidos por nuestra innovación, cumplimiento y servicio técnico especializado.</p>
           </div>
           <div class="border border-black/10 p-8" data-aos="fade-up" data-aos-delay="200">
-            <div class="text-3xl mb-4">⚙️</div>
+            <svg class="w-6 h-6 mb-4 text-black inline-block" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true">
+  <circle cx="12" cy="12" r="3"/>
+  <path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1l2.1-2.1M17 7l2.1-2.1"/>
+</svg>
             <h3 class="text-xl font-bold text-black mb-3">Valores</h3>
             <ul class="text-black/60 text-sm space-y-2">
               <li>• Seguridad ante todo</li>
