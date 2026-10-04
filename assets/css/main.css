@@ -257,3 +257,122 @@ img {
   height: 100% !important;
   z-index: 0 !important;
 }
+/* ============================================
+   MODO ALTO CONTRASTE
+   ============================================ */
+
+/* Fondo general negro */
+body.high-contrast {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+/* Forzar TODOS los textos a blanco */
+body.high-contrast * {
+  color: #fff !important;
+}
+
+/* Textos secundarios (con opacidad) en gris claro */
+body.high-contrast .text-black\/60,
+body.high-contrast .text-black\/50,
+body.high-contrast .text-black\/40,
+body.high-contrast .text-black\/30 {
+  color: rgba(255,255,255,0.7) !important;
+}
+
+/* SVG: el stroke hereda del color del padre (que ya es blanco) */
+body.high-contrast svg {
+  color: #fff !important;
+  stroke: #fff !important;
+}
+
+body.high-contrast svg * {
+  stroke: #fff !important;
+}
+
+/* SVG con fill explícito (como el botón contraste) */
+body.high-contrast svg [fill="currentColor"] {
+  fill: #fff !important;
+}
+
+/* Bordes: pasarlos a blanco translúcido */
+body.high-contrast .border-black\/10,
+body.high-contrast .border-black\/20,
+body.high-contrast [class*="border-black"] {
+  border-color: rgba(255,255,255,0.2) !important;
+}
+
+/* Contenedores con fondo claro → fondo oscuro */
+body.high-contrast .bg-white,
+body.high-contrast .bg-black\/5,
+body.high-contrast .bg-black\/10 {
+  background-color: #111 !important;
+}
+
+/* Excepciones: botones negros siguen negros, header/footer ya son oscuros */
+body.high-contrast .bg-black {
+  background-color: #000 !important;
+  border: 1px solid rgba(255,255,255,0.2) !important;
+}
+/* ============================================
+   Flechas de navegación del hero (Swiper)
+   ============================================ */
+.hero-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 30;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.4);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.3);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  user-select: none;
+}
+
+.hero-nav:hover,
+.hero-nav:focus {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+  outline: none;
+}
+
+.hero-nav:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.hero-nav-prev {
+  left: 1.5rem;
+}
+
+.hero-nav-next {
+  right: 1.5rem;
+}
+
+/* Flechas más chicas en móvil */
+@media (max-width: 767px) {
+  .hero-nav {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+  .hero-nav-prev { left: 0.75rem; }
+  .hero-nav-next { right: 0.75rem; }
+}
+
+/* Modo contraste: invertir colores */
+body.high-contrast .hero-nav {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  border-color: rgba(255,255,255,0.4);
+}
+body.high-contrast .hero-nav:hover,
+body.high-contrast .hero-nav:focus {
+  background: #fff;
+  color: #000;
+}

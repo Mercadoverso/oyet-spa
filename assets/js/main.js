@@ -12,9 +12,9 @@
     }
 
     // Inicializar Swiper si existe el contenedor
-    var heroSwiper = document.querySelector('.hero-swiper');
-    if (heroSwiper && typeof Swiper !== 'undefined') {
-      new Swiper('.hero-swiper', {
+    var heroSwiperEl = document.querySelector('.hero-swiper');
+    if (heroSwiperEl && typeof Swiper !== 'undefined') {
+      var heroSwiper = new Swiper('.hero-swiper', {
         loop: true,
         effect: 'fade',
         fadeEffect: { crossFade: true },
@@ -22,6 +22,23 @@
         speed: 2000,
         a11y: { enabled: true }
       });
+
+      // Flechas de navegación
+      var prevBtn = document.querySelector('.hero-nav-prev');
+      var nextBtn = document.querySelector('.hero-nav-next');
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', function () { heroSwiper.slidePrev(); });
+        prevBtn.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); heroSwiper.slidePrev(); }
+        });
+      }
+      if (nextBtn) {
+        nextBtn.addEventListener('click', function () { heroSwiper.slideNext(); });
+        nextBtn.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); heroSwiper.slideNext(); }
+        });
+      }
     }
 
     // Año dinámico en footer

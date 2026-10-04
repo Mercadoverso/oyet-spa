@@ -108,7 +108,13 @@
       <div class="hidden md:flex items-center gap-4">
         <a href="contacto.html" class="text-[11px] font-bold uppercase tracking-wider text-black hover:opacity-60">Contacto</a>
         <a href="cotizar.html" class="bg-black text-white text-[11px] font-bold uppercase tracking-wider px-5 py-3 shadow-md hover:bg-black/80">Cotizar</a>
-        <button id="contrast-toggle" type="button" class="text-[11px] font-bold uppercase tracking-wider text-black hover:opacity-60 px-2 py-1 border border-black/20" aria-label="Alternar modo alto contraste">🌓 Contraste</button>
+        <button id="contrast-toggle" type="button" class="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-black hover:opacity-60 px-3 py-2 border border-black/20" aria-label="Alternar modo alto contraste">
+  <svg class="w-4 h-4 inline-block" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true">
+    <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor"/>
+    <path d="M12 3a9 9 0 0 0 0 18" fill="currentColor" stroke="currentColor"/>
+  </svg>
+  Contraste
+</button>
       </div>
 
       <button id="mobile-menu-button" type="button" class="md:hidden text-black focus:outline-none" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
@@ -128,7 +134,7 @@
         <a href="clientes.html" class="mobile-link py-2 text-sm font-bold uppercase tracking-wider text-black">Clientes</a>
         <a href="contacto.html" class="mobile-link py-2 text-sm font-bold uppercase tracking-wider text-black">Contacto</a>
         <a href="cotizar.html" class="mobile-link bg-black text-white text-center py-3 text-sm font-bold uppercase tracking-wider">Cotizar</a>
-        <button id="contrast-toggle-mobile" type="button" class="bg-black/10 text-black text-center py-3 text-sm font-bold uppercase tracking-wider w-full mt-2"> Modo Contraste</button>
+        <button id="contrast-toggle-mobile" type="button" class="bg-black/10 text-black text-center py-3 text-sm font-bold uppercase tracking-wider w-full mt-2">Modo Contraste</button>
       </div>
     </div>
   </header>
@@ -157,6 +163,18 @@
           </div>
         </div>
       </div>
+
+      <!-- Flechas de navegación del hero -->
+<div class="hero-nav hero-nav-prev" role="button" tabindex="0" aria-label="Slide anterior">
+  <svg class="w-5 h-5" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true">
+    <path d="M15 19l-7-7 7-7"/>
+  </svg>
+</div>
+<div class="hero-nav hero-nav-next" role="button" tabindex="0" aria-label="Slide siguiente">
+  <svg class="w-5 h-5" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true">
+    <path d="M9 5l7 7-7 7"/>
+  </svg>
+</div>
 
       <div class="relative z-20 container-custom h-full flex items-center" style="position:relative;z-index:20;">
         <div class="max-w-2xl">
