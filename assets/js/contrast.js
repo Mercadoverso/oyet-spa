@@ -6,6 +6,9 @@
 
   var STORAGE_KEY = 'oyet-high-contrast';
 
+  // Ícono SVG: círculo mitad lleno / mitad vacío
+  var ICON = '<svg class="w-4 h-4 inline-block" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor"/><path d="M12 3a9 9 0 0 0 0 18" fill="currentColor" stroke="currentColor"/></svg>';
+
   document.addEventListener('DOMContentLoaded', function () {
     var btn = document.getElementById('contrast-toggle');
     var btnMobile = document.getElementById('contrast-toggle-mobile');
@@ -16,14 +19,16 @@
       isActive = localStorage.getItem(STORAGE_KEY) === 'true';
     } catch (e) { /* localStorage bloqueado */ }
 
+    function updateButtons(active) {
+      if (btn) btn.innerHTML = ICON + ' ' + (active ? 'Normal' : 'Contraste');
+      if (btnMobile) btnMobile.innerHTML = ICON + ' ' + (active ? 'Modo Normal' : 'Modo Contraste');
+    }
+
     if (isActive) {
       body.classList.add('high-contrast');
       updateButtons(true);
-    }
-
-    function updateButtons(active) {
-      if (btn) btn.textContent = active ? ' Normal' : ' Contraste';
-      if (btnMobile) btnMobile.innerHTML = active ? ' Modo Normal' : ' Modo Contraste';
+    } else {
+      updateButtons(false);
     }
 
     function toggle() {
